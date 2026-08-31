@@ -73,7 +73,7 @@ def generate_ntt_engine():
     lines.append("    genvar i;")
     lines.append("    generate")
     lines.append("        for (i = 0; i < STAGES; i = i + 1) begin : butterfly_gen")
-    lines.append("            butterfly_unit_CT #(")
+    lines.append("            ButterflyUnitCT #(")
     lines.append("                .DATA_WIDTH(`DATA_WIDTH),")
     lines.append("                .Q(`Q),")
     lines.append("                .Q_WIDTH(`Q_WIDTH),")
@@ -192,7 +192,7 @@ def generate_ntt_engine():
     with open(OUTPUT_FILE, "w") as f:
         f.write("\n".join(lines))
 
-    print(f"✅ FINAL CLEAN RTL GENERATED for N = {N}")
+    print(f"FINAL CLEAN RTL GENERATED for N = {N}")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-module butterfly_unit_CT #(
+module ButterflyUnitCT #(
     parameter DATA_WIDTH = 16,
     parameter Q          = 3329,
     parameter Q_WIDTH    = 16,
