@@ -1,8 +1,8 @@
 module Delay_Unit #(
     parameter DATA_WIDTH = 16,
     parameter STAGE     = 1,
-    parameter DEPTH     = 10,
-    parameter N         = 16
+    parameter DEPTH     = 6,
+    parameter N         = 256
 ) (
     // generic inputs 
     input clk_i, rst_i,
@@ -133,13 +133,3 @@ module Delay_Unit #(
     end
 
 endmodule
-
-/*
-    Buffer Module: 
-    buffer 1 and buffer 2 
-    buffer 1 stores 2^stage-1 inputs 
-    buffer 2 stores next 2^stage-1 inputs
-    as soon as buffer 2 recieves 1st data use it for output 
-    continuity: repeat this every 2^stage-1 cycles
-    and if buffer 2 has data then keep on giving valid out.
-*/

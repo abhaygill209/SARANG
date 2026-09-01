@@ -33,6 +33,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         CData/*0:0*/ Delay_Unit__DOT__buffer_1_empty;
         CData/*0:0*/ Delay_Unit__DOT__buffer_2_empty;
         CData/*0:0*/ Delay_Unit__DOT__state;
+        CData/*7:0*/ Delay_Unit__DOT__counter;
         CData/*0:0*/ Delay_Unit__DOT__fifo_change;
         CData/*0:0*/ Delay_Unit__DOT__buffer_1__DOT__clk;
         CData/*0:0*/ Delay_Unit__DOT__buffer_1__DOT__rst;
@@ -61,23 +62,22 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         SData/*15:0*/ Delay_Unit__DOT__b_o;
         SData/*15:0*/ Delay_Unit__DOT__buffer_1_data_o;
         SData/*15:0*/ Delay_Unit__DOT__buffer_2_data_o;
-        SData/*8:0*/ Delay_Unit__DOT__counter;
         SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT__rd_data;
-        SData/*9:0*/ Delay_Unit__DOT__buffer_1__DOT__wr_ptr;
-        SData/*9:0*/ Delay_Unit__DOT__buffer_1__DOT__rd_ptr;
-        SData/*10:0*/ Delay_Unit__DOT__buffer_1__DOT__occupancy;
-        SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT____Vlvbound_h57f8e2fc__0;
-        SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT____Vlvbound_hf0066f4b__0;
-        SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT____Vlvbound_h57f8e2fc__1;
-        SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT____Vlvbound_hf0066f4b__1;
+        SData/*8:0*/ Delay_Unit__DOT__buffer_1__DOT__wr_ptr;
+        SData/*8:0*/ Delay_Unit__DOT__buffer_1__DOT__rd_ptr;
+        SData/*9:0*/ Delay_Unit__DOT__buffer_1__DOT__occupancy;
+        SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT____Vlvbound_ha5d4e25c__0;
+        SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT____Vlvbound_h4fda8f02__0;
+        SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT____Vlvbound_ha5d4e25c__1;
+        SData/*15:0*/ Delay_Unit__DOT__buffer_1__DOT____Vlvbound_h4fda8f02__1;
         SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT__rd_data;
-        SData/*9:0*/ Delay_Unit__DOT__buffer_2__DOT__wr_ptr;
-        SData/*9:0*/ Delay_Unit__DOT__buffer_2__DOT__rd_ptr;
-        SData/*10:0*/ Delay_Unit__DOT__buffer_2__DOT__occupancy;
-        SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT____Vlvbound_h57f8e2fc__0;
-        SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT____Vlvbound_hf0066f4b__0;
-        SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT____Vlvbound_h57f8e2fc__1;
-        SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT____Vlvbound_hf0066f4b__1;
+        SData/*8:0*/ Delay_Unit__DOT__buffer_2__DOT__wr_ptr;
+        SData/*8:0*/ Delay_Unit__DOT__buffer_2__DOT__rd_ptr;
+        SData/*9:0*/ Delay_Unit__DOT__buffer_2__DOT__occupancy;
+        SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT____Vlvbound_ha5d4e25c__0;
+        SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT____Vlvbound_h4fda8f02__0;
+        SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT____Vlvbound_ha5d4e25c__1;
+        SData/*15:0*/ Delay_Unit__DOT__buffer_2__DOT____Vlvbound_h4fda8f02__1;
         IData/*31:0*/ Delay_Unit__DOT__buffer_1_data_i;
         IData/*31:0*/ Delay_Unit__DOT__buffer_2_data_i;
     };
@@ -87,8 +87,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__wr_data;
         IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__i;
         IData/*31:0*/ __VactIterCount;
-        VlUnpacked<SData/*15:0*/, 772> Delay_Unit__DOT__buffer_1__DOT__mem;
-        VlUnpacked<SData/*15:0*/, 772> Delay_Unit__DOT__buffer_2__DOT__mem;
+        VlUnpacked<SData/*15:0*/, 388> Delay_Unit__DOT__buffer_1__DOT__mem;
+        VlUnpacked<SData/*15:0*/, 388> Delay_Unit__DOT__buffer_2__DOT__mem;
         VlUnpacked<QData/*63:0*/, 1> __VstlTriggered;
         VlUnpacked<QData/*63:0*/, 1> __VicoTriggered;
         VlUnpacked<QData/*63:0*/, 1> __VactTriggered;
@@ -100,17 +100,17 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
 
     // PARAMETERS
     static constexpr IData/*31:0*/ Delay_Unit__DOT__DATA_WIDTH = 0x00000010U;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__STAGE = 8U;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__DEPTH = 0x00000182U;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__N = 0x00000010U;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_1__DOT__DEPTH = 0x00000182U;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__STAGE = 7U;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__DEPTH = 0x000000c2U;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__N = 0x00000100U;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_1__DOT__DEPTH = 0x000000c2U;
     static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_1__DOT__DATA_WIDTH = 0x00000010U;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_1__DOT__MEM_DEPTH = 0x00000304U;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_1__DOT__PTR_W = 0x0000000aU;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__DEPTH = 0x00000182U;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_1__DOT__MEM_DEPTH = 0x00000184U;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_1__DOT__PTR_W = 9U;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__DEPTH = 0x000000c2U;
     static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__DATA_WIDTH = 0x00000010U;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__MEM_DEPTH = 0x00000304U;
-    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__PTR_W = 0x0000000aU;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__MEM_DEPTH = 0x00000184U;
+    static constexpr IData/*31:0*/ Delay_Unit__DOT__buffer_2__DOT__PTR_W = 9U;
 
     // CONSTRUCTORS
     Vtop___024root(Vtop__Syms* symsp, const char* v__name);

@@ -1,8 +1,8 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1788241902" />
-    <testcase name="directed_values" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/ButterflyUnitCT/tb.py" lineno="172" time="0.1165924072265625" sim_time_ns="45031.0" ratio_time="386225.836408847" />
-    <testcase name="randomized_streaming_values" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/ButterflyUnitCT/tb.py" lineno="202" time="0.05532526969909668" sim_time_ns="7581.0" ratio_time="137025.99266540544" />
-    <testcase name="streaming_with_stall" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/ButterflyUnitCT/tb.py" lineno="216" time="0.07097554206848145" sim_time_ns="10711.0" ratio_time="150911.14048365262" />
+    <property name="random_seed" value="1788242110" />
+    <testcase name="directed_values" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/ButterflyUnitCT/tb.py" lineno="172" time="0.11372160911560059" sim_time_ns="45031.0" ratio_time="395975.75474178325" />
+    <testcase name="randomized_streaming_values" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/ButterflyUnitCT/tb.py" lineno="202" time="0.03676724433898926" sim_time_ns="7581.0" ratio_time="206188.9634725996" />
+    <testcase name="streaming_with_stall" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/ButterflyUnitCT/tb.py" lineno="216" time="0.04589986801147461" sim_time_ns="9391.0" ratio_time="204597.53822499714" />
   </testsuite>
 </testsuites>

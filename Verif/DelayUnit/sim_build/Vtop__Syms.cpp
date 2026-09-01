@@ -24,7 +24,7 @@ Vtop__Syms::Vtop__Syms(VerilatedContext* contextp, const char* namep, Vtop* mode
     , TOP{this, namep}
 {
     // Check resources
-    Verilated::stackCheck(360);
+    Verilated::stackCheck(358);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-9);
     _vm_contextp__->timeprecision(-12);
@@ -63,7 +63,7 @@ Vtop__Syms::Vtop__Syms(VerilatedContext* contextp, const char* namep, Vtop* mode
         __Vscope_Delay_Unit.varInsert(__Vfinal,"buffer_2_rd_en", &(TOP.Delay_Unit__DOT__buffer_2_rd_en), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit.varInsert(__Vfinal,"buffer_2_wr_en", &(TOP.Delay_Unit__DOT__buffer_2_wr_en), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit.varInsert(__Vfinal,"clk_i", &(TOP.Delay_Unit__DOT__clk_i), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
-        __Vscope_Delay_Unit.varInsert(__Vfinal,"counter", &(TOP.Delay_Unit__DOT__counter), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,8,0);
+        __Vscope_Delay_Unit.varInsert(__Vfinal,"counter", &(TOP.Delay_Unit__DOT__counter), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,1 ,7,0);
         __Vscope_Delay_Unit.varInsert(__Vfinal,"fifo_change", &(TOP.Delay_Unit__DOT__fifo_change), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit.varInsert(__Vfinal,"rst_i", &(TOP.Delay_Unit__DOT__rst_i), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit.varInsert(__Vfinal,"stall_i", &(TOP.Delay_Unit__DOT__stall_i), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
@@ -78,15 +78,15 @@ Vtop__Syms::Vtop__Syms(VerilatedContext* contextp, const char* namep, Vtop* mode
         __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"empty", &(TOP.Delay_Unit__DOT__buffer_1__DOT__empty), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"full", &(TOP.Delay_Unit__DOT__buffer_1__DOT__full), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"i", &(TOP.Delay_Unit__DOT__buffer_1__DOT__i), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,0,1 ,31,0);
-        __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"mem", &(TOP.Delay_Unit__DOT__buffer_1__DOT__mem), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,1,1 ,0,771 ,15,0);
-        __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"occupancy", &(TOP.Delay_Unit__DOT__buffer_1__DOT__occupancy), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,10,0);
+        __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"mem", &(TOP.Delay_Unit__DOT__buffer_1__DOT__mem), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,1,1 ,0,387 ,15,0);
+        __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"occupancy", &(TOP.Delay_Unit__DOT__buffer_1__DOT__occupancy), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,9,0);
         __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"rd_data", &(TOP.Delay_Unit__DOT__buffer_1__DOT__rd_data), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,15,0);
         __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"rd_en", &(TOP.Delay_Unit__DOT__buffer_1__DOT__rd_en), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
-        __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"rd_ptr", &(TOP.Delay_Unit__DOT__buffer_1__DOT__rd_ptr), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,9,0);
+        __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"rd_ptr", &(TOP.Delay_Unit__DOT__buffer_1__DOT__rd_ptr), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,8,0);
         __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"rst", &(TOP.Delay_Unit__DOT__buffer_1__DOT__rst), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"wr_data", &(TOP.Delay_Unit__DOT__buffer_1__DOT__wr_data), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,0,1 ,31,0);
         __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"wr_en", &(TOP.Delay_Unit__DOT__buffer_1__DOT__wr_en), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
-        __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"wr_ptr", &(TOP.Delay_Unit__DOT__buffer_1__DOT__wr_ptr), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,9,0);
+        __Vscope_Delay_Unit__buffer_1.varInsert(__Vfinal,"wr_ptr", &(TOP.Delay_Unit__DOT__buffer_1__DOT__wr_ptr), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,8,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"DATA_WIDTH", const_cast<void*>(static_cast<const void*>(&(TOP.Delay_Unit__DOT__buffer_2__DOT__DATA_WIDTH))), true, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,0,1 ,31,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"DEPTH", const_cast<void*>(static_cast<const void*>(&(TOP.Delay_Unit__DOT__buffer_2__DOT__DEPTH))), true, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,0,1 ,31,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"MEM_DEPTH", const_cast<void*>(static_cast<const void*>(&(TOP.Delay_Unit__DOT__buffer_2__DOT__MEM_DEPTH))), true, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,0,1 ,31,0);
@@ -95,15 +95,15 @@ Vtop__Syms::Vtop__Syms(VerilatedContext* contextp, const char* namep, Vtop* mode
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"empty", &(TOP.Delay_Unit__DOT__buffer_2__DOT__empty), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"full", &(TOP.Delay_Unit__DOT__buffer_2__DOT__full), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"i", &(TOP.Delay_Unit__DOT__buffer_2__DOT__i), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,0,1 ,31,0);
-        __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"mem", &(TOP.Delay_Unit__DOT__buffer_2__DOT__mem), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,1,1 ,0,771 ,15,0);
-        __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"occupancy", &(TOP.Delay_Unit__DOT__buffer_2__DOT__occupancy), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,10,0);
+        __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"mem", &(TOP.Delay_Unit__DOT__buffer_2__DOT__mem), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,1,1 ,0,387 ,15,0);
+        __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"occupancy", &(TOP.Delay_Unit__DOT__buffer_2__DOT__occupancy), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,9,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"rd_data", &(TOP.Delay_Unit__DOT__buffer_2__DOT__rd_data), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,15,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"rd_en", &(TOP.Delay_Unit__DOT__buffer_2__DOT__rd_en), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
-        __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"rd_ptr", &(TOP.Delay_Unit__DOT__buffer_2__DOT__rd_ptr), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,9,0);
+        __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"rd_ptr", &(TOP.Delay_Unit__DOT__buffer_2__DOT__rd_ptr), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,8,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"rst", &(TOP.Delay_Unit__DOT__buffer_2__DOT__rst), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"wr_data", &(TOP.Delay_Unit__DOT__buffer_2__DOT__wr_data), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,0,1 ,31,0);
         __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"wr_en", &(TOP.Delay_Unit__DOT__buffer_2__DOT__wr_en), false, VLVT_UINT8,VLVD_NODIR|VLVF_PUB_RW,0,0);
-        __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"wr_ptr", &(TOP.Delay_Unit__DOT__buffer_2__DOT__wr_ptr), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,9,0);
+        __Vscope_Delay_Unit__buffer_2.varInsert(__Vfinal,"wr_ptr", &(TOP.Delay_Unit__DOT__buffer_2__DOT__wr_ptr), false, VLVT_UINT16,VLVD_NODIR|VLVF_PUB_RW,0,1 ,8,0);
         __Vscope_TOP.varInsert(__Vfinal,"a_i", &(TOP.a_i), false, VLVT_UINT16,VLVD_IN|VLVF_PUB_RW,0,1 ,15,0);
         __Vscope_TOP.varInsert(__Vfinal,"a_o", &(TOP.a_o), false, VLVT_UINT16,VLVD_OUT|VLVF_PUB_RW,0,1 ,15,0);
         __Vscope_TOP.varInsert(__Vfinal,"b_i", &(TOP.b_i), false, VLVT_UINT16,VLVD_IN|VLVF_PUB_RW,0,1 ,15,0);

@@ -24,13 +24,30 @@ from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, ClockCycles, Timer
 
 
+import math
+
+
 def get_dut_params(dut):
-    """Extract parameters from the DUT."""
-    stage = int(dut.STAGE.value) if hasattr(dut, "STAGE") else 1
+    """Extract parameters from the DUT and compute stage constraints."""
     data_width = int(dut.DATA_WIDTH.value) if hasattr(dut, "DATA_WIDTH") else 16
     depth = int(dut.DEPTH.value) if hasattr(dut, "DEPTH") else 10
-    n = int(dut.N.value) if hasattr(dut, "N") else 16
-    return stage, data_width, depth, n
+    n = int(dut.N.value) if hasattr(dut, "N") else 256
+    stage = int(dut.STAGE.value) if hasattr(dut, "STAGE") else 1
+
+    # In radix-2 NTT with N points, total butterfly stages = log2(N),
+    # and intermediate commutator/delay unit stages = log2(N) - 1.
+    max_stages = int(math.log2(n)) - 1 if n > 1 else 1
+
+    dut._log.info(
+        f"[DEBUG:PARAMS] Extracted DUT parameters -> STAGE={stage} (max valid stage={max_stages} for N={n}), "
+        f"DATA_WIDTH={data_width}, DEPTH={depth}, N={n}"
+    )
+
+    assert 1 <= stage <= max_stages, (
+        f"Invalid STAGE={stage} for N={n}! Total commutator stages must be between 1 and log2(N)-1 ({max_stages})."
+    )
+
+    return stage, data_width, depth, n, max_stages
 
 
 def reorder_delay_unit_block(input_pairs, stage):
@@ -45,7 +62,8 @@ def reorder_delay_unit_block(input_pairs, stage):
     buf2 = []
     for a, b in input_pairs[k:]:
         buf2.extend([a, b])
-    return list(zip(buf1, buf2))
+    out = list(zip(buf1, buf2))
+    return out
 
 
 def reorder_delay_unit_stream(input_pairs, stage):
@@ -59,18 +77,21 @@ def reorder_delay_unit_stream(input_pairs, stage):
     output_pairs = []
     for i in range(0, len(input_pairs), block_size):
         block = input_pairs[i:i + block_size]
-        output_pairs.extend(reorder_delay_unit_block(block, stage))
+        reordered = reorder_delay_unit_block(block, stage)
+        output_pairs.extend(reordered)
     return output_pairs
 
 
 async def start_clock(dut, period_ns=10):
     """Start clock generator."""
+    dut._log.info(f"[DEBUG:CLOCK] Starting clock with period {period_ns} ns")
     clock = Clock(dut.clk_i, period_ns, unit="ns")
     cocotb.start_soon(clock.start())
 
 
 async def reset_dut(dut):
     """Apply synchronous reset to DUT."""
+    dut._log.info("[DEBUG:RESET] Asserting reset (rst_i=1)")
     dut.rst_i.value = 1
     dut.valid_i.value = 0
     dut.stall_i.value = 0
@@ -79,8 +100,10 @@ async def reset_dut(dut):
 
     await ClockCycles(dut.clk_i, 3)
     dut.rst_i.value = 0
+    dut._log.info("[DEBUG:RESET] De-asserting reset (rst_i=0)")
     await RisingEdge(dut.clk_i)
     await Timer(1, unit="ns")
+    dut._log.info("[DEBUG:RESET] Reset sequence complete")
 
 
 async def run_stream(dut, input_pairs, stage, max_cycles=10000):
@@ -89,6 +112,11 @@ async def run_stream(dut, input_pairs, stage, max_cycles=10000):
     """
     expected_pairs = reorder_delay_unit_stream(input_pairs, stage)
     expected_latency = (1 << (stage - 1)) + 2  # cycles from first input to first valid_o
+
+    dut._log.info(
+        f"[DEBUG:STREAM] Starting run_stream: {len(input_pairs)} input pairs, "
+        f"{len(expected_pairs)} expected output pairs, expected latency ~{expected_latency} cycles"
+    )
 
     collected_outputs = []
     in_idx = 0
@@ -100,21 +128,37 @@ async def run_stream(dut, input_pairs, stage, max_cycles=10000):
             dut.valid_i.value = 1
             dut.a_i.value = input_pairs[in_idx][0]
             dut.b_i.value = input_pairs[in_idx][1]
+            dut._log.info(
+                f"[DEBUG:CYCLE {cycle:04d}] DRIVE IN  -> in_idx={in_idx:03d}, "
+                f"valid_i=1, a_i={input_pairs[in_idx][0]}, b_i={input_pairs[in_idx][1]}"
+            )
             in_idx += 1
         else:
             dut.valid_i.value = 0
             dut.a_i.value = 0
             dut.b_i.value = 0
+            dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] DRIVE IN  -> IDLE (valid_i=0)")
 
         await RisingEdge(dut.clk_i)
         await Timer(1, unit="ns")
 
-        if int(dut.valid_o.value) == 1:
+        val_o = int(dut.valid_o.value)
+        if val_o == 1:
             if first_valid_cycle is None:
                 first_valid_cycle = cycle
+                dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] FIRST VALID_O DETECTED (Latency = {cycle} cycles)")
             a_out = int(dut.a_o.value)
             b_out = int(dut.b_o.value)
+            out_idx = len(collected_outputs)
+            exp_a, exp_b = expected_pairs[out_idx]
+            match_str = "MATCH" if (a_out, b_out) == (exp_a, exp_b) else "MISMATCH"
+            dut._log.info(
+                f"[DEBUG:CYCLE {cycle:04d}] SAMPLE OUT -> out_idx={out_idx:03d}, "
+                f"valid_o=1, a_o={a_out}, b_o={b_out} | Expected: ({exp_a}, {exp_b}) [{match_str}]"
+            )
             collected_outputs.append((a_out, b_out))
+        else:
+            dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] SAMPLE OUT -> valid_o=0")
 
         cycle += 1
         assert cycle < max_cycles, f"Simulation timeout after {cycle} cycles"
@@ -127,10 +171,11 @@ async def run_stream(dut, input_pairs, stage, max_cycles=10000):
     # Wait for valid_o to return to 0 (all data drained)
     await RisingEdge(dut.clk_i)
     await Timer(1, unit="ns")
+    dut._log.info(f"[DEBUG:DRAIN] Post-stream valid_o = {int(dut.valid_o.value)}")
     assert int(dut.valid_o.value) == 0, "valid_o should be 0 after all data has been drained"
 
     # Check latency
-    dut._log.info(f"First valid output observed at cycle {first_valid_cycle} (expected ~{expected_latency})")
+    dut._log.info(f"[DEBUG:RESULT] First valid output observed at cycle {first_valid_cycle} (expected ~{expected_latency})")
 
     # Check data correctness
     assert len(collected_outputs) == len(expected_pairs), (
@@ -142,7 +187,7 @@ async def run_stream(dut, input_pairs, stage, max_cycles=10000):
             f"expected a_o={exp[0]}, b_o={exp[1]}"
         )
 
-    dut._log.info(f"Successfully verified {len(collected_outputs)} output pairs against golden model.")
+    dut._log.info(f"[DEBUG:RESULT] Successfully verified {len(collected_outputs)} output pairs against golden model.")
     return collected_outputs
 
 
@@ -152,10 +197,13 @@ async def directed_single_block(dut):
     Test 1: Directed single block test with known incrementing integers.
     Verifies exact reordering behavior and cycle latency.
     """
+    dut._log.info("================================================================================")
+    dut._log.info("Starting Test 1: directed_single_block")
+    dut._log.info("================================================================================")
     await start_clock(dut)
     await reset_dut(dut)
 
-    stage, data_width, depth, n = get_dut_params(dut)
+    stage, data_width, depth, n, max_stages = get_dut_params(dut)
     dut._log.info(f"--- Running directed_single_block (STAGE={stage}, DATA_WIDTH={data_width}) ---")
 
     block_size = 1 << stage
@@ -167,11 +215,12 @@ async def directed_single_block(dut):
         input_pairs.append((a, b))
 
     expected_pairs = reorder_delay_unit_stream(input_pairs, stage)
-    dut._log.info(f"Input pairs:    {input_pairs}")
-    dut._log.info(f"Expected pairs: {expected_pairs}")
+    dut._log.info(f"[DEBUG:TEST1] Generated {len(input_pairs)} input pairs:    {input_pairs}")
+    dut._log.info(f"[DEBUG:TEST1] Calculated {len(expected_pairs)} expected pairs: {expected_pairs}")
 
     outputs = await run_stream(dut, input_pairs, stage)
     assert outputs == expected_pairs
+    dut._log.info("Test 1: directed_single_block PASSED\n")
 
 
 @cocotb.test()
@@ -180,15 +229,19 @@ async def continuous_multi_block_stream(dut):
     Test 2: Continuous multi-block stream test.
     Verifies throughput and data ordering across multiple consecutive blocks without bubbles.
     """
+    dut._log.info("================================================================================")
+    dut._log.info("Starting Test 2: continuous_multi_block_stream")
+    dut._log.info("================================================================================")
     await start_clock(dut)
     await reset_dut(dut)
 
-    stage, data_width, depth, n = get_dut_params(dut)
+    stage, data_width, depth, n, max_stages = get_dut_params(dut)
     dut._log.info(f"--- Running continuous_multi_block_stream (STAGE={stage}) ---")
 
     num_blocks = 8
     block_size = 1 << stage
     total_pairs = num_blocks * block_size
+    dut._log.info(f"[DEBUG:TEST2] Testing {num_blocks} consecutive blocks ({total_pairs} total pairs)")
 
     input_pairs = []
     for i in range(total_pairs):
@@ -197,6 +250,7 @@ async def continuous_multi_block_stream(dut):
         input_pairs.append((a, b))
 
     await run_stream(dut, input_pairs, stage)
+    dut._log.info("Test 2: continuous_multi_block_stream PASSED\n")
 
 
 @cocotb.test()
@@ -205,10 +259,13 @@ async def randomized_streaming(dut):
     Test 3: Randomized streaming test.
     Verifies arbitrary data patterns with pseudo-random values.
     """
+    dut._log.info("================================================================================")
+    dut._log.info("Starting Test 3: randomized_streaming")
+    dut._log.info("================================================================================")
     await start_clock(dut)
     await reset_dut(dut)
 
-    stage, data_width, depth, n = get_dut_params(dut)
+    stage, data_width, depth, n, max_stages = get_dut_params(dut)
     dut._log.info(f"--- Running randomized_streaming (STAGE={stage}) ---")
 
     rng = random.Random(42 + stage)
@@ -217,6 +274,7 @@ async def randomized_streaming(dut):
     num_blocks = 16
     block_size = 1 << stage
     total_pairs = num_blocks * block_size
+    dut._log.info(f"[DEBUG:TEST3] Testing {num_blocks} randomized blocks ({total_pairs} pairs, max_val={max_val})")
 
     input_pairs = [
         (rng.randint(0, max_val), rng.randint(0, max_val))
@@ -224,6 +282,7 @@ async def randomized_streaming(dut):
     ]
 
     await run_stream(dut, input_pairs, stage)
+    dut._log.info("Test 3: randomized_streaming PASSED\n")
 
 
 @cocotb.test()
@@ -232,10 +291,13 @@ async def multi_frame_with_inter_frame_gaps(dut):
     Test 4: Multi-frame test with idle intervals between frames.
     Simulates consecutive NTT transform frames separated by idle cycles.
     """
+    dut._log.info("================================================================================")
+    dut._log.info("Starting Test 4: multi_frame_with_inter_frame_gaps")
+    dut._log.info("================================================================================")
     await start_clock(dut)
     await reset_dut(dut)
 
-    stage, data_width, depth, n = get_dut_params(dut)
+    stage, data_width, depth, n, max_stages = get_dut_params(dut)
     dut._log.info(f"--- Running multi_frame_with_inter_frame_gaps (STAGE={stage}) ---")
 
     rng = random.Random(100 + stage)
@@ -243,9 +305,10 @@ async def multi_frame_with_inter_frame_gaps(dut):
     block_size = 1 << stage
     num_frames = 4
     pairs_per_frame = block_size * 2  # 2 blocks per frame
+    dut._log.info(f"[DEBUG:TEST4] Sending {num_frames} frames ({pairs_per_frame} pairs per frame)")
 
     for frame in range(num_frames):
-        dut._log.info(f"Sending Frame {frame + 1}/{num_frames}...")
+        dut._log.info(f"[DEBUG:TEST4] Sending Frame {frame + 1}/{num_frames}...")
         frame_inputs = [
             (rng.randint(0, max_val), rng.randint(0, max_val))
             for _ in range(pairs_per_frame)
@@ -254,11 +317,12 @@ async def multi_frame_with_inter_frame_gaps(dut):
 
         # Idle interval between frames
         idle_cycles = rng.randint(3, 10)
-        dut._log.info(f"Inserting {idle_cycles} idle cycles before next frame...")
+        dut._log.info(f"[DEBUG:TEST4] Inserting {idle_cycles} idle cycles before next frame...")
         dut.valid_i.value = 0
         dut.a_i.value = 0
         dut.b_i.value = 0
         await ClockCycles(dut.clk_i, idle_cycles)
+    dut._log.info("Test 4: multi_frame_with_inter_frame_gaps PASSED\n")
 
 
 @cocotb.test()
@@ -266,10 +330,13 @@ async def corner_case_values(dut):
     """
     Test 5: Corner case data patterns (all 0s, all 1s, alternating bitmasks, max values).
     """
+    dut._log.info("================================================================================")
+    dut._log.info("Starting Test 5: corner_case_values")
+    dut._log.info("================================================================================")
     await start_clock(dut)
     await reset_dut(dut)
 
-    stage, data_width, depth, n = get_dut_params(dut)
+    stage, data_width, depth, n, max_stages = get_dut_params(dut)
     dut._log.info(f"--- Running corner_case_values (STAGE={stage}) ---")
 
     max_val = (1 << data_width) - 1
@@ -285,6 +352,8 @@ async def corner_case_values(dut):
         (3328, 3327),  # Q-1, Q-2 for Kyber / Dilithium NTT
     ]
 
+    dut._log.info(f"[DEBUG:TEST5] Base corner case patterns: {special_patterns}")
+
     # Pad or repeat to fill integer number of blocks
     input_pairs = []
     while len(input_pairs) < block_size * 4:
@@ -293,7 +362,9 @@ async def corner_case_values(dut):
             if len(input_pairs) >= block_size * 4:
                 break
 
+    dut._log.info(f"[DEBUG:TEST5] Total input pairs prepared: {len(input_pairs)}")
     await run_stream(dut, input_pairs, stage)
+    dut._log.info("Test 5: corner_case_values PASSED\n")
 
 
 @cocotb.test()
@@ -301,27 +372,32 @@ async def mid_stream_reset_recovery(dut):
     """
     Test 6: Assert reset mid-stream and ensure clean recovery on subsequent transactions.
     """
+    dut._log.info("================================================================================")
+    dut._log.info("Starting Test 6: mid_stream_reset_recovery")
+    dut._log.info("================================================================================")
     await start_clock(dut)
     await reset_dut(dut)
 
-    stage, data_width, depth, n = get_dut_params(dut)
+    stage, data_width, depth, n, max_stages = get_dut_params(dut)
     dut._log.info(f"--- Running mid_stream_reset_recovery (STAGE={stage}) ---")
 
     block_size = 1 << stage
     # Start driving some data
+    dut._log.info(f"[DEBUG:TEST6] Driving {block_size} cycles of dummy data before mid-stream reset")
     dut.valid_i.value = 1
     dut.a_i.value = 0x1234
     dut.b_i.value = 0x5678
     await ClockCycles(dut.clk_i, block_size)
 
     # Trigger reset mid-stream
-    dut._log.info("Applying synchronous reset mid-stream...")
+    dut._log.info("[DEBUG:TEST6] Applying synchronous reset mid-stream...")
     dut.rst_i.value = 1
     dut.valid_i.value = 0
     await ClockCycles(dut.clk_i, 3)
     dut.rst_i.value = 0
     await RisingEdge(dut.clk_i)
     await Timer(1, unit="ns")
+    dut._log.info(f"[DEBUG:TEST6] Post-reset valid_o = {int(dut.valid_o.value)}")
 
     assert int(dut.valid_o.value) == 0, "valid_o must be 0 after reset"
 
@@ -330,4 +406,6 @@ async def mid_stream_reset_recovery(dut):
         (i + 1, (i + 1) * 10)
         for i in range(block_size * 2)
     ]
+    dut._log.info(f"[DEBUG:TEST6] Driving fresh stream of {len(fresh_inputs)} pairs after reset recovery")
     await run_stream(dut, fresh_inputs, stage)
+    dut._log.info("Test 6: mid_stream_reset_recovery PASSED\n")
