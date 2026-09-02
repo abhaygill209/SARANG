@@ -31,8 +31,8 @@ module Delay_Unit #(
     reg buffer_1_wr_en, buffer_2_wr_en;
     reg buffer_1_rd_en, buffer_2_rd_en;
     reg [2*DATA_WIDTH-1:0] buffer_1_data_i, buffer_2_data_i;
-    reg [DATA_WIDTH-1:0] buffer_1_data_o, buffer_2_data_o;
-    reg buffer_1_empty, buffer_2_empty;
+    wire [DATA_WIDTH-1:0] buffer_1_data_o, buffer_2_data_o;
+    wire buffer_1_empty, buffer_2_empty;
     reg state;
     reg [STAGE:0] counter;
     wire fifo_change;
@@ -71,12 +71,14 @@ module Delay_Unit #(
         if (rst_i) begin 
             counter <= 0;
         end 
-        else begin 
-            if (fifo_change) begin 
-                counter <= 0;
-            end 
-            else if (valid_i && !stall_i) begin 
-                counter <= counter + 1;
+        else if (!stall_i) begin 
+            if (valid_i) begin 
+                if (fifo_change) begin 
+                    counter <= 0;
+                end 
+                else begin 
+                    counter <= counter + 1;
+                end
             end
         end
     end
@@ -86,7 +88,7 @@ module Delay_Unit #(
         if (rst_i) begin 
             state <= 0;
         end 
-        else begin 
+        else if (!stall_i) begin 
             if (fifo_change && valid_i) begin 
                 state <= ~state;
             end 
@@ -99,16 +101,18 @@ module Delay_Unit #(
             0: begin 
                 buffer_1_data_i = {b_i, a_i};
                 buffer_2_data_i = 0;
-                buffer_1_wr_en = valid_i;
+                buffer_1_wr_en = valid_i && !stall_i;
                 buffer_2_wr_en = 0;
             end 
             1: begin 
                 buffer_1_data_i = 0;
                 buffer_2_data_i = {b_i, a_i};
                 buffer_1_wr_en = 0;
-                buffer_2_wr_en = valid_i;
+                buffer_2_wr_en = valid_i && !stall_i;
             end 
             default: begin 
+                buffer_1_data_i = 0;
+                buffer_2_data_i = 0;
                 buffer_1_wr_en = 0;
                 buffer_2_wr_en = 0;
             end
@@ -116,18 +120,19 @@ module Delay_Unit #(
     end 
     // control logic for reading from buffers
     always @(*) begin
-        buffer_1_rd_en = ~buffer_2_empty;
-        buffer_2_rd_en = ~buffer_2_empty;
-        a_o = buffer_1_data_o;
-        b_o = buffer_2_data_o;
+        buffer_1_rd_en = ~buffer_2_empty && !stall_i;
+        buffer_2_rd_en = ~buffer_2_empty && !stall_i;
     end
+
+    assign a_o = buffer_1_data_o;
+    assign b_o = buffer_2_data_o;
 
     // for valid_o
     always @(posedge clk_i) begin
         if (rst_i) begin 
             valid_o <= 0;
         end 
-        else begin 
+        else if (!stall_i) begin 
             valid_o <= !buffer_2_empty;
         end
     end

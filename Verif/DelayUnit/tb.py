@@ -106,10 +106,14 @@ async def reset_dut(dut):
     dut._log.info("[DEBUG:RESET] Reset sequence complete")
 
 
-async def run_stream(dut, input_pairs, stage, max_cycles=10000):
+async def run_stream(dut, input_pairs, stage, stall_pattern=None, max_cycles=10000):
     """
     Feed an input stream to DUT and collect & verify output pairs.
+    Supports injecting stall cycles via stall_pattern (set of cycle numbers).
     """
+    if stall_pattern is None:
+        stall_pattern = set()
+
     expected_pairs = reorder_delay_unit_stream(input_pairs, stage)
     expected_latency = (1 << (stage - 1)) + 2  # cycles from first input to first valid_o
 
@@ -124,47 +128,55 @@ async def run_stream(dut, input_pairs, stage, max_cycles=10000):
     first_valid_cycle = None
 
     while len(collected_outputs) < len(expected_pairs):
+        is_stalled = cycle in stall_pattern
+        dut.stall_i.value = int(is_stalled)
+
         if in_idx < len(input_pairs):
             dut.valid_i.value = 1
             dut.a_i.value = input_pairs[in_idx][0]
             dut.b_i.value = input_pairs[in_idx][1]
             dut._log.info(
                 f"[DEBUG:CYCLE {cycle:04d}] DRIVE IN  -> in_idx={in_idx:03d}, "
-                f"valid_i=1, a_i={input_pairs[in_idx][0]}, b_i={input_pairs[in_idx][1]}"
+                f"valid_i=1, a_i={input_pairs[in_idx][0]}, b_i={input_pairs[in_idx][1]}, stall_i={int(is_stalled)}"
             )
-            in_idx += 1
+            if not is_stalled:
+                in_idx += 1
         else:
             dut.valid_i.value = 0
             dut.a_i.value = 0
             dut.b_i.value = 0
-            dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] DRIVE IN  -> IDLE (valid_i=0)")
+            dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] DRIVE IN  -> IDLE (valid_i=0), stall_i={int(is_stalled)}")
 
         await RisingEdge(dut.clk_i)
         await Timer(1, unit="ns")
 
         val_o = int(dut.valid_o.value)
-        if val_o == 1:
-            if first_valid_cycle is None:
-                first_valid_cycle = cycle
-                dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] FIRST VALID_O DETECTED (Latency = {cycle} cycles)")
-            a_out = int(dut.a_o.value)
-            b_out = int(dut.b_o.value)
-            out_idx = len(collected_outputs)
-            exp_a, exp_b = expected_pairs[out_idx]
-            match_str = "MATCH" if (a_out, b_out) == (exp_a, exp_b) else "MISMATCH"
-            dut._log.info(
-                f"[DEBUG:CYCLE {cycle:04d}] SAMPLE OUT -> out_idx={out_idx:03d}, "
-                f"valid_o=1, a_o={a_out}, b_o={b_out} | Expected: ({exp_a}, {exp_b}) [{match_str}]"
-            )
-            collected_outputs.append((a_out, b_out))
+        if not is_stalled:
+            if val_o == 1:
+                if first_valid_cycle is None:
+                    first_valid_cycle = cycle
+                    dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] FIRST VALID_O DETECTED (Latency = {cycle} cycles)")
+                a_out = int(dut.a_o.value)
+                b_out = int(dut.b_o.value)
+                out_idx = len(collected_outputs)
+                exp_a, exp_b = expected_pairs[out_idx]
+                match_str = "MATCH" if (a_out, b_out) == (exp_a, exp_b) else "MISMATCH"
+                dut._log.info(
+                    f"[DEBUG:CYCLE {cycle:04d}] SAMPLE OUT -> out_idx={out_idx:03d}, "
+                    f"valid_o=1, a_o={a_out}, b_o={b_out} | Expected: ({exp_a}, {exp_b}) [{match_str}]"
+                )
+                collected_outputs.append((a_out, b_out))
+            else:
+                dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] SAMPLE OUT -> valid_o=0")
         else:
-            dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] SAMPLE OUT -> valid_o=0")
+            dut._log.info(f"[DEBUG:CYCLE {cycle:04d}] STALL ACTIVE (sampling paused, valid_o={val_o})")
 
         cycle += 1
         assert cycle < max_cycles, f"Simulation timeout after {cycle} cycles"
 
     # Drive input idle
     dut.valid_i.value = 0
+    dut.stall_i.value = 0
     dut.a_i.value = 0
     dut.b_i.value = 0
 
@@ -409,3 +421,75 @@ async def mid_stream_reset_recovery(dut):
     dut._log.info(f"[DEBUG:TEST6] Driving fresh stream of {len(fresh_inputs)} pairs after reset recovery")
     await run_stream(dut, fresh_inputs, stage)
     dut._log.info("Test 6: mid_stream_reset_recovery PASSED\n")
+
+
+@cocotb.test()
+async def streaming_with_random_stall(dut):
+    """
+    Test 7: Streaming data with randomized stall cycles injected.
+    Verifies that pipeline properly freezes/holds data during stalls without loss or corruption.
+    """
+    dut._log.info("================================================================================")
+    dut._log.info("Starting Test 7: streaming_with_random_stall")
+    dut._log.info("================================================================================")
+    await start_clock(dut)
+    await reset_dut(dut)
+
+    stage, data_width, depth, n, max_stages = get_dut_params(dut)
+    dut._log.info(f"--- Running streaming_with_random_stall (STAGE={stage}) ---")
+
+    rng = random.Random(777 + stage)
+    max_val = (1 << data_width) - 1
+    num_blocks = 8
+    block_size = 1 << stage
+    total_pairs = num_blocks * block_size
+
+    input_pairs = [
+        (rng.randint(0, max_val), rng.randint(0, max_val))
+        for _ in range(total_pairs)
+    ]
+
+    # Generate random stall cycles across 0..500
+    stall_cycles = set(rng.sample(range(500), 100))
+    dut._log.info(f"[DEBUG:TEST7] Injecting {len(stall_cycles)} stall cycles across stream")
+
+    await run_stream(dut, input_pairs, stage, stall_pattern=stall_cycles)
+    dut._log.info("Test 7: streaming_with_random_stall PASSED\n")
+
+
+@cocotb.test()
+async def streaming_with_burst_stall(dut):
+    """
+    Test 8: Streaming data with multi-cycle consecutive burst stalls.
+    Verifies that the unit holds its state across extended stall durations (e.g. 10 cycles).
+    """
+    dut._log.info("================================================================================")
+    dut._log.info("Starting Test 8: streaming_with_burst_stall")
+    dut._log.info("================================================================================")
+    await start_clock(dut)
+    await reset_dut(dut)
+
+    stage, data_width, depth, n, max_stages = get_dut_params(dut)
+    dut._log.info(f"--- Running streaming_with_burst_stall (STAGE={stage}) ---")
+
+    rng = random.Random(888 + stage)
+    max_val = (1 << data_width) - 1
+    num_blocks = 6
+    block_size = 1 << stage
+    total_pairs = num_blocks * block_size
+
+    input_pairs = [
+        (rng.randint(0, max_val), rng.randint(0, max_val))
+        for _ in range(total_pairs)
+    ]
+
+    # Create several multi-cycle burst stalls (e.g., cycles 5..15, 30..45, 70..85)
+    burst_stall_cycles = set()
+    for burst_start in [5, 30, 70, 120]:
+        for offset in range(12):
+            burst_stall_cycles.add(burst_start + offset)
+
+    dut._log.info(f"[DEBUG:TEST8] Injecting burst stalls at {sorted(burst_stall_cycles)}")
+
+    await run_stream(dut, input_pairs, stage, stall_pattern=burst_stall_cycles)
+    dut._log.info("Test 8: streaming_with_burst_stall PASSED\n")

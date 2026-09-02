@@ -1,11 +1,13 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1788256880" />
-    <testcase name="directed_single_block" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="194" time="0.01893758773803711" sim_time_ns="1971.0" ratio_time="104078.72572076041" />
-    <testcase name="continuous_multi_block_stream" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="226" time="0.11599588394165039" sim_time_ns="10941.0" ratio_time="94322.31238052956" />
-    <testcase name="randomized_streaming" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="256" time="0.21906709671020508" sim_time_ns="21181.0" ratio_time="96687.27215579746" />
-    <testcase name="multi_frame_with_inter_frame_gaps" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="288" time="0.10865902900695801" sim_time_ns="13220.0" ratio_time="121664.99296762033" />
-    <testcase name="corner_case_values" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="328" time="0.04750990867614746" sim_time_ns="5821.0" ratio_time="122521.809917148" />
-    <testcase name="mid_stream_reset_recovery" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="370" time="0.028962373733520508" sim_time_ns="4581.0" ratio_time="158170.7370448727" />
+    <property name="random_seed" value="1788283873" />
+    <testcase name="directed_single_block" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="206" time="0.01908421516418457" sim_time_ns="1971.0" ratio_time="103279.07032294334" />
+    <testcase name="continuous_multi_block_stream" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="238" time="0.09816884994506836" sim_time_ns="10941.0" ratio_time="111450.8319708561" />
+    <testcase name="randomized_streaming" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="268" time="0.1936967372894287" sim_time_ns="21181.0" ratio_time="109351.35148069417" />
+    <testcase name="multi_frame_with_inter_frame_gaps" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="300" time="0.11276865005493164" sim_time_ns="13220.0" ratio_time="117231.16303653808" />
+    <testcase name="corner_case_values" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="340" time="0.0497438907623291" sim_time_ns="5821.0" ratio_time="117019.39496072201" />
+    <testcase name="mid_stream_reset_recovery" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="382" time="0.02955317497253418" sim_time_ns="4581.0" ratio_time="155008.72594086564" />
+    <testcase name="streaming_with_random_stall" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="426" time="0.10793495178222656" sim_time_ns="11940.999999999993" ratio_time="110631.44794924802" />
+    <testcase name="streaming_with_burst_stall" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/DelayUnit/tb.py" lineno="460" time="0.07720732688903809" sim_time_ns="8861.0" ratio_time="114768.90027205549" />
   </testsuite>
 </testsuites>
