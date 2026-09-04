@@ -1,12 +1,12 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1788342520" />
-    <testcase name="test_csv_golden_stage_values" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="241" time="0.016229867935180664" sim_time_ns="3211.0" ratio_time="197845.10957354604" />
-    <testcase name="test_continuous_multi_frame_streaming" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="288" time="0.05571603775024414" sim_time_ns="9621.0" ratio_time="172679.1851769438" />
-    <testcase name="test_multi_frame_with_random_gaps" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="314" time="0.04304790496826172" sim_time_ns="7471.0" ratio_time="173550.8384323977" />
-    <testcase name="test_random_polynomial_transforms" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="340" time="0.0512242317199707" sim_time_ns="8341.0" ratio_time="162833.0912915988" />
-    <testcase name="test_corner_cases" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="365" time="0.03801774978637695" sim_time_ns="7061.0" ratio_time="185729.03550778262" />
-    <testcase name="test_mid_stream_reset_recovery" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="398" time="0.017255783081054688" sim_time_ns="3781.0" ratio_time="219114.9472753399" />
-    <testcase name="test_frame_latency_and_throughput" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="437" time="0.0370945930480957" sim_time_ns="7061.0" ratio_time="190351.19190672683" />
+    <property name="random_seed" value="1788510305" />
+    <testcase name="test_csv_golden_stage_values" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="241" time="0.015703201293945312" sim_time_ns="3211.0" ratio_time="204480.5985667436" />
+    <testcase name="test_continuous_multi_frame_streaming" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="288" time="0.04819488525390625" sim_time_ns="9621.0" ratio_time="199626.99255975938" />
+    <testcase name="test_multi_frame_with_random_gaps" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="314" time="0.036403656005859375" sim_time_ns="7471.0" ratio_time="205226.63984072095" />
+    <testcase name="test_random_polynomial_transforms" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="340" time="0.040232181549072266" sim_time_ns="8341.0" ratio_time="207321.59378000072" />
+    <testcase name="test_corner_cases" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="365" time="0.03641986846923828" sim_time_ns="7061.0" ratio_time="193877.6908533871" />
+    <testcase name="test_mid_stream_reset_recovery" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="398" time="0.014792203903198242" sim_time_ns="3781.0" ratio_time="255607.61768450914" />
+    <testcase name="test_frame_latency_and_throughput" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/tb.py" lineno="437" time="0.03539562225341797" sim_time_ns="7061.0" ratio_time="199487.9465445238" />
   </testsuite>
 </testsuites>

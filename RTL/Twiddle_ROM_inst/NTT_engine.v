@@ -43,7 +43,7 @@ module NTT_engine(
     genvar i;
     generate
         for (i = 0; i < STAGES; i = i + 1) begin : butterfly_gen
-            butterfly_unit_CT #(
+            ButterflyUnitCT #(
                 .DATA_WIDTH(`DATA_WIDTH),
                 .Q(`Q),
                 .Q_WIDTH(`Q_WIDTH),
@@ -214,7 +214,7 @@ module NTT_engine(
         .STAGE(1),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactors/stage_1.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/stage_2.mem")
     ) t_rom_1 (
         .clk(clk),
         .stall_i(stall_i),
@@ -226,7 +226,7 @@ module NTT_engine(
         .STAGE(2),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactors/stage_2.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/stage_3.mem")
     ) t_rom_2 (
         .clk(clk),
         .stall_i(stall_i),
@@ -238,7 +238,7 @@ module NTT_engine(
         .STAGE(3),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactors/stage_3.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/stage_4.mem")
     ) t_rom_3 (
         .clk(clk),
         .stall_i(stall_i),
@@ -250,7 +250,7 @@ module NTT_engine(
         .STAGE(4),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactors/stage_4.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/stage_5.mem")
     ) t_rom_4 (
         .clk(clk),
         .stall_i(stall_i),
@@ -262,7 +262,7 @@ module NTT_engine(
         .STAGE(5),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactors/stage_5.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/stage_6.mem")
     ) t_rom_5 (
         .clk(clk),
         .stall_i(stall_i),
@@ -274,7 +274,7 @@ module NTT_engine(
         .STAGE(6),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactors/stage_6.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/stage_7.mem")
     ) t_rom_6 (
         .clk(clk),
         .stall_i(stall_i),
@@ -286,7 +286,7 @@ module NTT_engine(
         .STAGE(7),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactors/stage_7.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/stage_8.mem")
     ) t_rom_7 (
         .clk(clk),
         .stall_i(stall_i),

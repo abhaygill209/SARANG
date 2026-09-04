@@ -595,7 +595,6 @@ void Vtop___024root___nba_sequent__TOP__2(Vtop___024root* vlSelf) {
     if (vlSelfRef.Delay_Unit__DOT__rst_i) {
         __Vdly__Delay_Unit__DOT__counter = 0U;
         __Vdly__Delay_Unit__DOT__state = 0U;
-        vlSelfRef.Delay_Unit__DOT__valid_o = 0U;
     } else if ((1U & (~ (IData)(vlSelfRef.Delay_Unit__DOT__stall_i)))) {
         if (vlSelfRef.Delay_Unit__DOT__valid_i) {
             __Vdly__Delay_Unit__DOT__counter = ((IData)(vlSelfRef.Delay_Unit__DOT__fifo_change)
@@ -610,9 +609,12 @@ void Vtop___024root___nba_sequent__TOP__2(Vtop___024root* vlSelf) {
             __Vdly__Delay_Unit__DOT__state = (1U & 
                                               (~ (IData)(vlSelfRef.Delay_Unit__DOT__state)));
         }
-        vlSelfRef.Delay_Unit__DOT__valid_o = (1U & 
-                                              (~ (IData)(vlSelfRef.Delay_Unit__DOT__buffer_2_empty)));
     }
+    vlSelfRef.Delay_Unit__DOT__valid_o = ((1U & (~ (IData)(vlSelfRef.Delay_Unit__DOT__rst_i))) 
+                                          && ((1U & 
+                                               (~ (IData)(vlSelfRef.Delay_Unit__DOT__stall_i))) 
+                                              && (1U 
+                                                  & (~ (IData)(vlSelfRef.Delay_Unit__DOT__buffer_2_empty)))));
     vlSelfRef.Delay_Unit__DOT__counter = __Vdly__Delay_Unit__DOT__counter;
     vlSelfRef.Delay_Unit__DOT__state = __Vdly__Delay_Unit__DOT__state;
     vlSelfRef.Delay_Unit__DOT__fifo_change = (0x3fU 

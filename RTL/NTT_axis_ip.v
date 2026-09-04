@@ -17,9 +17,7 @@ module NTT_axis_ip #(
     output wire [C_AXIS_TDATA_WIDTH-1:0] m_axis_tdata,
     output wire m_axis_tvalid,
     input  wire m_axis_tready,
-    output wire m_axis_tlast,
-
-    output wire irq
+    output wire m_axis_tlast
 );
 
     initial begin

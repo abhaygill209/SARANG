@@ -9,7 +9,10 @@ constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__DATA_WIDTH;
 constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__Q;
 constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__Q_WIDTH;
 constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__Q_INV;
-constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__R_MASK;
+constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__MULT_WIDTH;
+constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__MQ_WIDTH;
+constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__T_WIDTH;
+constexpr IData/*31:0*/ Vtop___024root::ButterflyUnitCT__DOT__TDIV_WIDTH;
 
 
 void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf);

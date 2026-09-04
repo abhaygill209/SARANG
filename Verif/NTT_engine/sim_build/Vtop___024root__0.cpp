@@ -74,6 +74,54 @@ void Vtop___024root___ico_sequent__TOP__0(Vtop___024root* vlSelf) {
         = (0x3fU == (IData)(vlSelfRef.NTT_engine__DOT__Delay_inst_7__DOT__counter));
     vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__w 
         = vlSelfRef.NTT_engine__DOT__tf_data_0;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s1)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s1)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s1)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s1)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s1)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s1)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s1)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s1)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4)));
     vlSelfRef.NTT_engine__DOT__Delay_inst_1__DOT__buffer_1__DOT__empty 
         = (0U == (IData)(vlSelfRef.NTT_engine__DOT__Delay_inst_1__DOT__buffer_1__DOT__occupancy));
     vlSelfRef.NTT_engine__DOT__Delay_inst_2__DOT__buffer_1__DOT__empty 
@@ -95,6 +143,70 @@ void Vtop___024root___ico_sequent__TOP__0(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__tf_data_5 = vlSelfRef.NTT_engine__DOT__t_rom_5__DOT__dout;
     vlSelfRef.NTT_engine__DOT__tf_data_6 = vlSelfRef.NTT_engine__DOT__t_rom_6__DOT__dout;
     vlSelfRef.NTT_engine__DOT__tf_data_7 = vlSelfRef.NTT_engine__DOT__t_rom_7__DOT__dout;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4)));
     vlSelfRef.NTT_engine__DOT__DU_BU_valid[0U] = vlSelfRef.NTT_engine__DOT__Delay_inst_1__DOT__valid_o;
     vlSelfRef.NTT_engine__DOT__DU_BU_valid[1U] = vlSelfRef.NTT_engine__DOT__Delay_inst_2__DOT__valid_o;
     vlSelfRef.NTT_engine__DOT__DU_BU_valid[2U] = vlSelfRef.NTT_engine__DOT__Delay_inst_3__DOT__valid_o;
@@ -202,6 +314,86 @@ void Vtop___024root___ico_sequent__TOP__0(Vtop___024root* vlSelf) {
         = vlSelfRef.NTT_engine__DOT__tf_data_6;
     vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__w 
         = vlSelfRef.NTT_engine__DOT__tf_data_7;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
     vlSelfRef.NTT_engine__DOT__Delay_inst_1__DOT__b_o 
         = vlSelfRef.NTT_engine__DOT__Delay_inst_1__DOT__buffer_2_data_o;
     vlSelfRef.NTT_engine__DOT__Delay_inst_2__DOT__b_o 
@@ -4774,51 +4966,33 @@ void Vtop___024root___nba_sequent__TOP__29(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__stall)))) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s4) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_out = 1U;
-            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp 
-                = (0x0001ffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                  + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4)));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_o 
-                = (0x00000fffU & ((0x00000d01U <= vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp)
-                                   ? (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp 
-                                      - (IData)(0x0d01U))
-                                   : vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp));
-            if (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4) 
-                 >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4)));
-            } else {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__sub_temp 
-                    = (0x0001ffffU & (((IData)(0x00000d01U) 
-                                       + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4)) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4)));
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__sub_temp);
-            }
+                = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp))
+                                   ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_sub_q)
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp)));
+            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__b_o 
+                = (0x00000fffU & (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                   >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   ? ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__sub_temp)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_out = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s3) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s4 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3 
-                   >> 0x00000010U);
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s3;
-            if ((0x00000d01U <= VL_SHIFTR_III(32,32,32, vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3, 0x00000010U))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4 
-                    = (0x0000ffffU & ((vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3 
-                                       >> 0x00000010U) 
-                                      - (IData)(0x0d01U)));
-            }
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s4 = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s2) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s3 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s2 
-                   + ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__m_s2)));
+                = (0x00001fffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_next 
+                                  >> 0x10U));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s3 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s2;
         } else {
@@ -4827,8 +5001,7 @@ void Vtop___024root___nba_sequent__TOP__29(Vtop___024root* vlSelf) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s1) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s2 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__m_s2 
-                = (0x0000ffffU & ((IData)(0x00000cffU) 
-                                  * vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s1));
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__m_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s2 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s1;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s2 
@@ -4841,8 +5014,8 @@ void Vtop___024root___nba_sequent__TOP__29(Vtop___024root* vlSelf) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s1 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_i;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s1 
-                = ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__b_i) 
-                   * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__w));
+                = (0x00ffffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__b_i) 
+                                  * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__w)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_s1 = 0U;
         }
@@ -4850,6 +5023,30 @@ void Vtop___024root___nba_sequent__TOP__29(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__BU_DU_valid[0U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__valid_out;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_a[0U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_o;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_b[0U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__b_o;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__0__KET____DOT__butterfly_inst__DOT__mult_s1)));
 }
 
 void Vtop___024root___nba_sequent__TOP__30(Vtop___024root* vlSelf) {
@@ -4877,51 +5074,33 @@ void Vtop___024root___nba_sequent__TOP__30(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__stall)))) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s4) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_out = 1U;
-            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp 
-                = (0x0001ffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                  + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4)));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_o 
-                = (0x00000fffU & ((0x00000d01U <= vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp)
-                                   ? (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp 
-                                      - (IData)(0x0d01U))
-                                   : vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp));
-            if (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4) 
-                 >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4)));
-            } else {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__sub_temp 
-                    = (0x0001ffffU & (((IData)(0x00000d01U) 
-                                       + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4)) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4)));
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__sub_temp);
-            }
+                = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp))
+                                   ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_sub_q)
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp)));
+            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__b_o 
+                = (0x00000fffU & (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                   >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   ? ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__sub_temp)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_out = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s3) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s4 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3 
-                   >> 0x00000010U);
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s3;
-            if ((0x00000d01U <= VL_SHIFTR_III(32,32,32, vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3, 0x00000010U))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4 
-                    = (0x0000ffffU & ((vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3 
-                                       >> 0x00000010U) 
-                                      - (IData)(0x0d01U)));
-            }
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s4 = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s2) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s3 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s2 
-                   + ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__m_s2)));
+                = (0x00001fffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_next 
+                                  >> 0x10U));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s3 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s2;
         } else {
@@ -4930,8 +5109,7 @@ void Vtop___024root___nba_sequent__TOP__30(Vtop___024root* vlSelf) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s1) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s2 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__m_s2 
-                = (0x0000ffffU & ((IData)(0x00000cffU) 
-                                  * vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s1));
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__m_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s2 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s1;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s2 
@@ -4944,8 +5122,8 @@ void Vtop___024root___nba_sequent__TOP__30(Vtop___024root* vlSelf) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s1 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_i;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s1 
-                = ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__b_i) 
-                   * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__w));
+                = (0x00ffffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__b_i) 
+                                  * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__w)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_s1 = 0U;
         }
@@ -4953,6 +5131,30 @@ void Vtop___024root___nba_sequent__TOP__30(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__BU_DU_valid[1U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__valid_out;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_a[1U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_o;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_b[1U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__b_o;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__1__KET____DOT__butterfly_inst__DOT__mult_s1)));
 }
 
 void Vtop___024root___nba_sequent__TOP__31(Vtop___024root* vlSelf) {
@@ -4980,51 +5182,33 @@ void Vtop___024root___nba_sequent__TOP__31(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__stall)))) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s4) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_out = 1U;
-            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp 
-                = (0x0001ffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                  + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4)));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_o 
-                = (0x00000fffU & ((0x00000d01U <= vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp)
-                                   ? (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp 
-                                      - (IData)(0x0d01U))
-                                   : vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp));
-            if (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4) 
-                 >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4)));
-            } else {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__sub_temp 
-                    = (0x0001ffffU & (((IData)(0x00000d01U) 
-                                       + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4)) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4)));
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__sub_temp);
-            }
+                = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp))
+                                   ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_sub_q)
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp)));
+            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__b_o 
+                = (0x00000fffU & (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                   >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   ? ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__sub_temp)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_out = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s3) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s4 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3 
-                   >> 0x00000010U);
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s3;
-            if ((0x00000d01U <= VL_SHIFTR_III(32,32,32, vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3, 0x00000010U))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4 
-                    = (0x0000ffffU & ((vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3 
-                                       >> 0x00000010U) 
-                                      - (IData)(0x0d01U)));
-            }
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s4 = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s2) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s3 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s2 
-                   + ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__m_s2)));
+                = (0x00001fffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_next 
+                                  >> 0x10U));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s3 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s2;
         } else {
@@ -5033,8 +5217,7 @@ void Vtop___024root___nba_sequent__TOP__31(Vtop___024root* vlSelf) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s1) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s2 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__m_s2 
-                = (0x0000ffffU & ((IData)(0x00000cffU) 
-                                  * vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s1));
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__m_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s2 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s1;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s2 
@@ -5047,8 +5230,8 @@ void Vtop___024root___nba_sequent__TOP__31(Vtop___024root* vlSelf) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s1 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_i;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s1 
-                = ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__b_i) 
-                   * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__w));
+                = (0x00ffffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__b_i) 
+                                  * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__w)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_s1 = 0U;
         }
@@ -5056,6 +5239,30 @@ void Vtop___024root___nba_sequent__TOP__31(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__BU_DU_valid[2U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__valid_out;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_a[2U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_o;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_b[2U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__b_o;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__2__KET____DOT__butterfly_inst__DOT__mult_s1)));
 }
 
 void Vtop___024root___nba_sequent__TOP__32(Vtop___024root* vlSelf) {
@@ -5083,51 +5290,33 @@ void Vtop___024root___nba_sequent__TOP__32(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__stall)))) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s4) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_out = 1U;
-            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp 
-                = (0x0001ffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                  + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4)));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_o 
-                = (0x00000fffU & ((0x00000d01U <= vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp)
-                                   ? (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp 
-                                      - (IData)(0x0d01U))
-                                   : vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp));
-            if (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4) 
-                 >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4)));
-            } else {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__sub_temp 
-                    = (0x0001ffffU & (((IData)(0x00000d01U) 
-                                       + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4)) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4)));
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__sub_temp);
-            }
+                = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp))
+                                   ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_sub_q)
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp)));
+            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__b_o 
+                = (0x00000fffU & (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                   >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   ? ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__sub_temp)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_out = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s3) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s4 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3 
-                   >> 0x00000010U);
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s3;
-            if ((0x00000d01U <= VL_SHIFTR_III(32,32,32, vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3, 0x00000010U))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4 
-                    = (0x0000ffffU & ((vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3 
-                                       >> 0x00000010U) 
-                                      - (IData)(0x0d01U)));
-            }
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s4 = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s2) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s3 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s2 
-                   + ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__m_s2)));
+                = (0x00001fffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_next 
+                                  >> 0x10U));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s3 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s2;
         } else {
@@ -5136,8 +5325,7 @@ void Vtop___024root___nba_sequent__TOP__32(Vtop___024root* vlSelf) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s1) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s2 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__m_s2 
-                = (0x0000ffffU & ((IData)(0x00000cffU) 
-                                  * vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s1));
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__m_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s2 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s1;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s2 
@@ -5150,8 +5338,8 @@ void Vtop___024root___nba_sequent__TOP__32(Vtop___024root* vlSelf) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s1 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_i;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s1 
-                = ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__b_i) 
-                   * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__w));
+                = (0x00ffffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__b_i) 
+                                  * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__w)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_s1 = 0U;
         }
@@ -5159,6 +5347,30 @@ void Vtop___024root___nba_sequent__TOP__32(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__BU_DU_valid[3U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__valid_out;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_a[3U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_o;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_b[3U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__b_o;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__3__KET____DOT__butterfly_inst__DOT__mult_s1)));
 }
 
 void Vtop___024root___nba_sequent__TOP__33(Vtop___024root* vlSelf) {
@@ -5186,51 +5398,33 @@ void Vtop___024root___nba_sequent__TOP__33(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__stall)))) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s4) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_out = 1U;
-            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp 
-                = (0x0001ffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                  + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4)));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_o 
-                = (0x00000fffU & ((0x00000d01U <= vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp)
-                                   ? (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp 
-                                      - (IData)(0x0d01U))
-                                   : vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp));
-            if (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4) 
-                 >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4)));
-            } else {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__sub_temp 
-                    = (0x0001ffffU & (((IData)(0x00000d01U) 
-                                       + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4)) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4)));
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__sub_temp);
-            }
+                = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp))
+                                   ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_sub_q)
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp)));
+            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__b_o 
+                = (0x00000fffU & (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                   >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   ? ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__sub_temp)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_out = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s3) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s4 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3 
-                   >> 0x00000010U);
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s3;
-            if ((0x00000d01U <= VL_SHIFTR_III(32,32,32, vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3, 0x00000010U))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4 
-                    = (0x0000ffffU & ((vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3 
-                                       >> 0x00000010U) 
-                                      - (IData)(0x0d01U)));
-            }
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s4 = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s2) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s3 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s2 
-                   + ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__m_s2)));
+                = (0x00001fffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_next 
+                                  >> 0x10U));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s3 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s2;
         } else {
@@ -5239,8 +5433,7 @@ void Vtop___024root___nba_sequent__TOP__33(Vtop___024root* vlSelf) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s1) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s2 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__m_s2 
-                = (0x0000ffffU & ((IData)(0x00000cffU) 
-                                  * vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s1));
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__m_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s2 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s1;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s2 
@@ -5253,8 +5446,8 @@ void Vtop___024root___nba_sequent__TOP__33(Vtop___024root* vlSelf) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s1 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_i;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s1 
-                = ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__b_i) 
-                   * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__w));
+                = (0x00ffffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__b_i) 
+                                  * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__w)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_s1 = 0U;
         }
@@ -5262,6 +5455,30 @@ void Vtop___024root___nba_sequent__TOP__33(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__BU_DU_valid[4U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__valid_out;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_a[4U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_o;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_b[4U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__b_o;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__4__KET____DOT__butterfly_inst__DOT__mult_s1)));
 }
 
 void Vtop___024root___nba_sequent__TOP__34(Vtop___024root* vlSelf) {
@@ -5289,51 +5506,33 @@ void Vtop___024root___nba_sequent__TOP__34(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__stall)))) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s4) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_out = 1U;
-            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp 
-                = (0x0001ffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                  + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4)));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_o 
-                = (0x00000fffU & ((0x00000d01U <= vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp)
-                                   ? (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp 
-                                      - (IData)(0x0d01U))
-                                   : vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp));
-            if (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4) 
-                 >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4)));
-            } else {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__sub_temp 
-                    = (0x0001ffffU & (((IData)(0x00000d01U) 
-                                       + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4)) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4)));
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__sub_temp);
-            }
+                = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp))
+                                   ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_sub_q)
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp)));
+            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__b_o 
+                = (0x00000fffU & (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                   >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   ? ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__sub_temp)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_out = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s3) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s4 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3 
-                   >> 0x00000010U);
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s3;
-            if ((0x00000d01U <= VL_SHIFTR_III(32,32,32, vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3, 0x00000010U))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4 
-                    = (0x0000ffffU & ((vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3 
-                                       >> 0x00000010U) 
-                                      - (IData)(0x0d01U)));
-            }
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s4 = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s2) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s3 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s2 
-                   + ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__m_s2)));
+                = (0x00001fffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_next 
+                                  >> 0x10U));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s3 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s2;
         } else {
@@ -5342,8 +5541,7 @@ void Vtop___024root___nba_sequent__TOP__34(Vtop___024root* vlSelf) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s1) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s2 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__m_s2 
-                = (0x0000ffffU & ((IData)(0x00000cffU) 
-                                  * vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s1));
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__m_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s2 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s1;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s2 
@@ -5356,8 +5554,8 @@ void Vtop___024root___nba_sequent__TOP__34(Vtop___024root* vlSelf) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s1 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_i;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s1 
-                = ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__b_i) 
-                   * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__w));
+                = (0x00ffffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__b_i) 
+                                  * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__w)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_s1 = 0U;
         }
@@ -5365,6 +5563,30 @@ void Vtop___024root___nba_sequent__TOP__34(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__BU_DU_valid[5U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__valid_out;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_a[5U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_o;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_b[5U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__b_o;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__5__KET____DOT__butterfly_inst__DOT__mult_s1)));
 }
 
 void Vtop___024root___nba_sequent__TOP__35(Vtop___024root* vlSelf) {
@@ -5392,51 +5614,33 @@ void Vtop___024root___nba_sequent__TOP__35(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__stall)))) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s4) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_out = 1U;
-            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp 
-                = (0x0001ffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                  + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4)));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_o 
-                = (0x00000fffU & ((0x00000d01U <= vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp)
-                                   ? (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp 
-                                      - (IData)(0x0d01U))
-                                   : vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp));
-            if (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4) 
-                 >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4)));
-            } else {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__sub_temp 
-                    = (0x0001ffffU & (((IData)(0x00000d01U) 
-                                       + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4)) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4)));
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__sub_temp);
-            }
+                = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp))
+                                   ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_sub_q)
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp)));
+            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__b_o 
+                = (0x00000fffU & (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                   >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   ? ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__sub_temp)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_out = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s3) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s4 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3 
-                   >> 0x00000010U);
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s3;
-            if ((0x00000d01U <= VL_SHIFTR_III(32,32,32, vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3, 0x00000010U))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4 
-                    = (0x0000ffffU & ((vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3 
-                                       >> 0x00000010U) 
-                                      - (IData)(0x0d01U)));
-            }
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s4 = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s2) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s3 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s2 
-                   + ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__m_s2)));
+                = (0x00001fffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_next 
+                                  >> 0x10U));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s3 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s2;
         } else {
@@ -5445,8 +5649,7 @@ void Vtop___024root___nba_sequent__TOP__35(Vtop___024root* vlSelf) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s1) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s2 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__m_s2 
-                = (0x0000ffffU & ((IData)(0x00000cffU) 
-                                  * vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s1));
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__m_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s2 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s1;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s2 
@@ -5459,8 +5662,8 @@ void Vtop___024root___nba_sequent__TOP__35(Vtop___024root* vlSelf) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s1 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_i;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s1 
-                = ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__b_i) 
-                   * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__w));
+                = (0x00ffffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__b_i) 
+                                  * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__w)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_s1 = 0U;
         }
@@ -5468,6 +5671,30 @@ void Vtop___024root___nba_sequent__TOP__35(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__BU_DU_valid[6U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__valid_out;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_a[6U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_o;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_b[6U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__b_o;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__6__KET____DOT__butterfly_inst__DOT__mult_s1)));
 }
 
 void Vtop___024root___nba_sequent__TOP__36(Vtop___024root* vlSelf) {
@@ -5495,51 +5722,33 @@ void Vtop___024root___nba_sequent__TOP__36(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__stall)))) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s4) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_out = 1U;
-            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp 
-                = (0x0001ffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                  + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4)));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_o 
-                = (0x00000fffU & ((0x00000d01U <= vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp)
-                                   ? (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp 
-                                      - (IData)(0x0d01U))
-                                   : vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp));
-            if (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4) 
-                 >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4)));
-            } else {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__sub_temp 
-                    = (0x0001ffffU & (((IData)(0x00000d01U) 
-                                       + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4)) 
-                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4)));
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__b_o 
-                    = (0x00000fffU & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__sub_temp);
-            }
+                = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp))
+                                   ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_sub_q)
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp)));
+            vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__b_o 
+                = (0x00000fffU & (((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                   >= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   ? ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4) 
+                                      - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4))
+                                   : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__sub_temp)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_out = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s3) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s4 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3 
-                   >> 0x00000010U);
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s3;
-            if ((0x00000d01U <= VL_SHIFTR_III(32,32,32, vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3, 0x00000010U))) {
-                vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4 
-                    = (0x0000ffffU & ((vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3 
-                                       >> 0x00000010U) 
-                                      - (IData)(0x0d01U)));
-            }
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s4 = 0U;
         }
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s2) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s3 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3 
-                = (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s2 
-                   + ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__m_s2)));
+                = (0x00001fffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_next 
+                                  >> 0x10U));
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s3 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s2;
         } else {
@@ -5548,8 +5757,7 @@ void Vtop___024root___nba_sequent__TOP__36(Vtop___024root* vlSelf) {
         if (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s1) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s2 = 1U;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__m_s2 
-                = (0x0000ffffU & ((IData)(0x00000cffU) 
-                                  * vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s1));
+                = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__m_next;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s2 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s1;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s2 
@@ -5562,8 +5770,8 @@ void Vtop___024root___nba_sequent__TOP__36(Vtop___024root* vlSelf) {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s1 
                 = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_i;
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s1 
-                = ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__b_i) 
-                   * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__w));
+                = (0x00ffffffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__b_i) 
+                                  * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__w)));
         } else {
             vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_s1 = 0U;
         }
@@ -5571,6 +5779,30 @@ void Vtop___024root___nba_sequent__TOP__36(Vtop___024root* vlSelf) {
     vlSelfRef.NTT_engine__DOT__BU_DU_valid[7U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__valid_out;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_a[7U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_o;
     vlSelfRef.NTT_engine__DOT__BU_DU_bus_b[7U] = vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__b_o;
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__sub_temp 
+        = (0x00001fffU & (((IData)(0x0d01U) + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4)) 
+                          - (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__a_s4) 
+                          + (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_s4)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__add_temp) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_sub_q 
+        = (0x00001fffU & ((IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3) 
+                          - (IData)(0x0d01U)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__bw_next 
+        = (0x00000fffU & ((0x0d01U <= (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3))
+                           ? (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_sub_q)
+                           : (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_s3)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mq 
+        = (0x0fffffffU & ((IData)(0x00000d01U) * (IData)(vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__m_s2)));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__t_next 
+        = (0x1fffffffU & (vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s2 
+                          + vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mq));
+    vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__m_next 
+        = (0x0000ffffU & ((IData)(0x0cffU) * (0x0000ffffU 
+                                              & vlSelfRef.NTT_engine__DOT__butterfly_gen__BRA__7__KET____DOT__butterfly_inst__DOT__mult_s1)));
 }
 
 void Vtop___024root___nba_sequent__TOP__37(Vtop___024root* vlSelf) {

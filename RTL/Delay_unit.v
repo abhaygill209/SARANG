@@ -132,7 +132,10 @@ module Delay_Unit #(
         if (rst_i) begin 
             valid_o <= 0;
         end 
-        else if (!stall_i) begin 
+        else if (stall_i) begin 
+            valid_o <= 0;
+        end 
+        else begin 
             valid_o <= !buffer_2_empty;
         end
     end
