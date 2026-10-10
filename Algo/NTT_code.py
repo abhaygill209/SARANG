@@ -6,7 +6,8 @@ from pathlib import Path
 
 def generate_input(n, q, seed):
     rng = np.random.RandomState(seed)
-    return rng.randint(0, q, size=n, dtype=np.int64)
+    #return rng.randint(0, q, size=n, dtype=np.int64)
+    return np.linspace(0, 256, num=n, dtype=np.int64) % q  # Example input for testing
 
 
 def bit_reverse_copy(a):

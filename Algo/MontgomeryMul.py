@@ -3,7 +3,7 @@ import numpy as np
 class Montgomery:
     def __init__(self, modulus, R=2**16):
         self.modulus = modulus
-        self.R = R
+        self.R = R % self.modulus  # Ensure R is less than modulus
         self.mod_inv = (-pow(self.modulus, -1, self.R)) % self.R  # Compute R inverse modulo modulus
         self.R2 = (self.R * self.R) % self.modulus  # Precompute R^2 mod modulus
 
