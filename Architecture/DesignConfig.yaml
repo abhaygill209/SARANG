@@ -1,10 +1,10 @@
 NTT_Parameters:
-  q : 3329
-  w : 17
+  q : 7681
+  w : 3844
   n : 256
 
 Accelerator_params:
-  DataWidth : 12
+  DataWidth : 32
 
 Montgomery_params:
   aux_q : 65536

@@ -40,7 +40,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.append(str(REPO_ROOT / "Algo"))
 from MontgomeryMul import Montgomery
 
-Q = 3329
+Q = 7681
 R = 2**16
 N = 256
 NUM_PAIRS = N // 2  # 128 pairs per 256-point NTT frame
@@ -83,7 +83,7 @@ def reorder_delay_unit_stream(input_pairs, stage):
 
 def load_twiddle_factors():
     """Load hardware twiddle factor ROM values for all 8 stages."""
-    twiddles = [[0x08ED]]  # Stage 0 hardcoded constant (Montgomery of 1)
+    twiddles = [[0x0FF8]]  # Stage 0 hardcoded constant (Montgomery of 1)
     for s in range(2, 9):
         mem_path = REPO_ROOT / f"RTL/TwiddleFactorsGen/stage_{s}.mem"
         with open(mem_path, "r", encoding="utf-8") as f:

@@ -1,11 +1,6 @@
-import logging 
-import yaml
-import math
-import yaml_parser as yp
-import MontgomeryMul as mont
-
+import csv
+import logging
 from pathlib import Path
-
 
 # Configure logging format 
 logging.basicConfig(
@@ -13,55 +8,60 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-
-def twiddle_gen_NTT(q, w, n, R):
-    twiddle_factors = []
-
-    for i in range(int(math.log2(n))):
-        temp = []
-
-        for j in range(2**i):
-            exponent = j * n // (2**(i + 1))
-            factor = pow(w, exponent, q)
-            conv = mont.Montgomery(q, R)
-            temp.append(conv.to_mont(factor))
-
-        twiddle_factors.append(temp)
-
-    return twiddle_factors
-
 def to_hex(value, width=8):
     return f"{value:0{width}X}"
 
-
-def mem_file_gen(twiddle_factors, file_path):
-    output_dir = Path(file_path)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    for stage_index, factors in enumerate(twiddle_factors, start=1):
-        stage_file = output_dir / f"stage_{stage_index}.mem"
+def process_csv(csv_path, output_dir):
+    ntt_factors = {}
+    intt_factors = {}
+    
+    with open(csv_path, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            transform = row['Transform']
+            stage = int(row['Stage'])
+            # Assuming we want Twiddle_Montgomery values, as the original script used Montgomery
+            mont_val = int(row['Twiddle_Montgomery'])
+            
+            if transform == 'NTT':
+                if stage not in ntt_factors:
+                    ntt_factors[stage] = []
+                ntt_factors[stage].append(mont_val)
+            elif transform == 'INTT':
+                if stage not in intt_factors:
+                    intt_factors[stage] = []
+                intt_factors[stage].append(mont_val)
+                
+    # Generate mem files for NTT
+    ntt_dir = output_dir / 'ntt'
+    ntt_dir.mkdir(parents=True, exist_ok=True)
+    for stage, factors in ntt_factors.items():
+        # Stage in CSV is 0-indexed, making it 1-indexed for the filenames as per original generator
+        stage_file = ntt_dir / f"stage_{stage + 1}.mem"
+        with stage_file.open("w", encoding="utf-8") as f:
+            for factor in factors:
+                f.write(f"{to_hex(factor)}\n")
+                
+    # Generate mem files for INTT
+    intt_dir = output_dir / 'intt'
+    intt_dir.mkdir(parents=True, exist_ok=True)
+    for stage, factors in intt_factors.items():
+        stage_file = intt_dir / f"stage_{stage + 1}.mem"
         with stage_file.open("w", encoding="utf-8") as f:
             for factor in factors:
                 f.write(f"{to_hex(factor)}\n")
 
 def main():
-    config_path = Path("../../Architecture/DesignConfig.yaml")
+    csv_path = Path("../../Algo/twiddle_factors.csv").resolve()
+    # Fallback to the absolute path if relative path isn't found
+    if not csv_path.exists():
+        csv_path = Path("/home/abhay/OpenSource/PQC_ASIC/Algo/twiddle_factors.csv")
 
-    with config_path.open("r", encoding="utf-8") as config_file:
-            config_data = yaml.safe_load(config_file)
+    output_dir = Path(__file__).resolve().parent
     
-    config = yp.DesignConfig.from_dict(config_data)
-
-    #extracting NTT parameters
-    ntt = config.sections["NTT_Parameters"]
-    montgom = config.sections["Montgomery_params"]
-
-    logging.info("NTT Parameters - q: %d, w: %d, n: %d", ntt.q, ntt.w, ntt.n)
-
-    NTT_Factors = twiddle_gen_NTT(ntt.q, ntt.w, ntt.n, montgom.aux_q)
-    mem_file_gen(NTT_Factors, Path(__file__).resolve().parent)
-
-    logging.info("Success: NTT Twiddle factors generated.")
+    logging.info("Reading Twiddle Factors from CSV: %s", csv_path)
+    process_csv(csv_path, output_dir)
+    logging.info("Success: NTT and INTT Twiddle factors generated into ntt/ and intt/ directories.")
 
 
 if __name__ == "__main__":

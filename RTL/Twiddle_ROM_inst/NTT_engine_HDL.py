@@ -157,7 +157,7 @@ def generate_ntt_engine():
         lines.append(f"        .STAGE({stage}),")
         lines.append("        .DATA_WIDTH(`DATA_WIDTH),")
         lines.append("        .ADDR_WIDTH(`ADDR_WIDTH),")
-        lines.append(f"        .INIT_FILE(\"../../RTL/TwiddleFactorsGen/stage_{stage+1}.mem\")")
+        lines.append(f"        .INIT_FILE(\"../../RTL/TwiddleFactorsGen/INTT/stage_{stage+1}.mem\")")
         lines.append(f"    ) t_rom_{stage} (")
         lines.append("        .clk(clk),")
         lines.append("        .stall_i(stall_i),")
@@ -165,7 +165,7 @@ def generate_ntt_engine():
         lines.append(f"        .addr(tf_addr[{stage}])")
         lines.append("    );\n")
 
-    lines.append("    assign tf_data_0 = 16'h08ED;\n")
+    lines.append("    assign tf_data_0 = 16'h0FF8;\n")
 
     # ================= ADDR CONTROL =================
     lines.append("    genvar k;")

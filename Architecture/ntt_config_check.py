@@ -16,7 +16,7 @@ def is_prime(number: int) -> bool:
 
 def true_root(root:int ,N: int, q: int) -> bool:
     # root needs to be 17²⁵⁶ ≡ 1 (mod 3329) and 17¹²⁸ ≡ −1 (mod 3329) 
-    Nth_root = ((root ** N) % q == 1) and (root != 1) and (root ** (N // 2) % q == 3328)
+    Nth_root = ((root ** N) % q == 1) and ((root ** (N // 2)) % q == q - 1)
     return Nth_root
 
 

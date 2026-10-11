@@ -2,8 +2,9 @@
 // Source: Architecture/DesignConfig.yaml
 
 `define N 256
-`define Q 3329
-`define Q_INV 3327
-`define DATA_WIDTH 12
+`define Q 7681
+`define Q_INV 7679
+`define DATA_WIDTH 32
 `define ADDR_WIDTH 8
 `define Q_WIDTH 16
+`define N_inv 7651
