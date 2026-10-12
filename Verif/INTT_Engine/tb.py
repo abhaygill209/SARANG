@@ -1,19 +1,20 @@
 '''
 Take values form /home/abhay/OpenSource/PQC_ASIC/Algo/Input_output_NTT_INTT.csv
-Compare input and output values with RTL simulation results from /home/abhay/OpenSource/PQC_ASIC/Verif/INTT_Engine/INTT_engine_axis_wrapper_tb.vcd
+Compare input and output values with RTL simulation results
+
 AXI Verification Tests:
-    |-> Validity of input and output data
-    |-> Non-continuous data flow (stalling)
-    |-> Backpressure handling
+    |-> Validity of input and output data (ideal continuous flow)
+    |-> Non-continuous data flow (input valid stalls / irregular input arrival)
 '''
 import csv 
+import random
 import numpy as np
 
 import cocotb
-from cocotb.triggers import RisingEdge, FallingEdge, Timer
+from cocotb.triggers import RisingEdge, Timer
 from cocotb.clock import Clock
 
-input = []
+input_vals = []
 ntt_output = []
 intt_output = []
 
@@ -22,8 +23,8 @@ with open("/home/abhay/OpenSource/PQC_ASIC/Algo/Input_output_NTT_INTT.csv", "r")
     next(reader)  # Skip header row
 
     for row in reader: 
-        input.append(int(row[1]))  # Input values
-        ntt_output.append(int(row[2]))  # NTT output values
+        input_vals.append(int(row[1]))   # Input values
+        ntt_output.append(int(row[2]))   # NTT output values
         intt_output.append(int(row[3]))  # INTT output values
 
 async def start_clock(dut, period=10):
@@ -32,59 +33,77 @@ async def start_clock(dut, period=10):
     cocotb.start_soon(clock.start())
 
 async def reset_dut(dut):
-    """Reset the DUT."""
+    """Reset the DUT and initialize control signals."""
     dut.aresetn.value = 0
+    dut.s_axis_tvalid.value = 0
+    dut.s_axis_tlast.value = 0
+    dut.s_axis_tdata.value = 0
+    dut.m_axis_tready.value = 1
     await Timer(20, unit="ns")
+    await RisingEdge(dut.clk)
     dut.aresetn.value = 1
-    await Timer(20, unit="ns")
+    await RisingEdge(dut.clk)
 
-async def send_data(dut, data):
-    """Send 16-bit values packed two per AXI-Stream word."""
-
+async def send_data(dut, data, stall_prob=0.0, max_stall_cycles=0):
+    """
+    Send 16-bit values packed two per AXI-Stream word.
+    
+    Args:
+        dut: Device under test
+        data: List of values to send
+        stall_prob: Probability (0.0 to 1.0) of inserting idle stall cycles before a valid handshake
+        max_stall_cycles: Maximum duration of idle cycle bursts when stalling occurs
+    """
     dut.s_axis_tvalid.value = 0
     dut.s_axis_tlast.value = 0
 
     await RisingEdge(dut.clk)
 
-    dut.s_axis_tvalid.value = 1
+    num_words = (len(data) + 1) // 2
 
-    for i in range(0, len(data), 2):
+    for word_idx in range(num_words):
+        i = word_idx * 2
 
-        # Pack two 16-bit values into one 32-bit word
+        # Model irregular input arrival / non-continuous flow (tvalid deassertion stalls)
+        if stall_prob > 0.0 and random.random() < stall_prob:
+            stall_cycles = random.randint(1, max(1, max_stall_cycles))
+            dut.s_axis_tvalid.value = 0
+            dut.s_axis_tlast.value = 0
+            for _ in range(stall_cycles):
+                await RisingEdge(dut.clk)
+
+        # Pack two 16-bit values into one 64-bit word (two 32-bit slots)
         low = int(data[i]) & 0xFFFFFFFF
         high = int(data[i + 1]) & 0xFFFFFFFF if i + 1 < len(data) else 0
 
         dut.s_axis_tdata.value = low | (high << 32)
-        print(f"Sending: {low}, {high}")
+        is_last = 1 if (word_idx == num_words - 1) else 0
+        dut.s_axis_tlast.value = is_last
+        dut.s_axis_tvalid.value = 1
 
-        # Last AXI word
-        if i + 2 >= len(data):
-            dut.s_axis_tlast.value = 1
-        else:
-            dut.s_axis_tlast.value = 0
-
-        # Wait until transfer actually happens
+        # Wait until transfer handshake actually completes (tvalid=1 and tready=1 on posedge)
         while True:
             await RisingEdge(dut.clk)
-
             if dut.s_axis_tready.value == 1:
                 break
 
+    # Deassert signals after packet transmission is complete
     dut.s_axis_tvalid.value = 0
     dut.s_axis_tlast.value = 0
 
 async def receive_data(dut):
-    """Receive 64-bit AXI-Stream words and unpack them into 32-bit values."""
-
+    """
+    Receive 64-bit AXI-Stream words and unpack them into 32-bit values.
+    m_axis_tready is held high so the DUT can continuously stream out data.
+    """
     received_data = []
-
     dut.m_axis_tready.value = 1
 
     while True:
         await RisingEdge(dut.clk)
 
-        if dut.m_axis_tvalid.value == 1:
-
+        # Check for successful handshake
+        if dut.m_axis_tvalid.value == 1 and dut.m_axis_tready.value == 1:
             word = int(dut.m_axis_tdata.value)
 
             # Extract two 32-bit values
@@ -93,64 +112,61 @@ async def receive_data(dut):
 
             received_data.append(low)
             received_data.append(high)
-            print(f"Received: {low}, {high}")
-            # End of packet
+
+            # End of packet indicated by tlast
             if dut.m_axis_tlast.value == 1:
                 break
 
     return received_data
 
+
+async def run_intt_test_case(dut, test_name, stall_prob=0.0, max_stall_cycles=0):
+    """Helper to run a complete reset-drive-receive-verify test cycle."""
+    cocotb.log.info("==================================================")
+    cocotb.log.info(f" RUNNING: {test_name}")
+    cocotb.log.info(f" stall_prob={stall_prob}, max_stall_cycles={max_stall_cycles}")
+    cocotb.log.info("==================================================")
+
+    await reset_dut(dut)
+
+    recv_task = cocotb.start_soon(receive_data(dut))
+    await send_data(dut, ntt_output, stall_prob=stall_prob, max_stall_cycles=max_stall_cycles)
+
+    received_data = await recv_task
+    output_data = np.array(received_data[:len(intt_output)], dtype=np.int64)
+
+    assert np.array_equal(output_data, intt_output), (
+        f"{test_name}: Mismatch found! Received {len(output_data)} values."
+    )
+    cocotb.log.info(f"PASSED: {test_name}")
+
+
 @cocotb.test()
-async def test_intt_engine(dut):
-
-    print("\n======================================")
-    print("       INTT ENGINE AXI TEST")
-    print("======================================")
-
+async def test_intt_all(dut):
+    """INTT verification covering continuous flow and irregular input stalls."""
     # Start clock
     await start_clock(dut)
 
-    # Reset DUT
-    await reset_dut(dut)
+    # 1. Baseline continuous flow
+    await run_intt_test_case(
+        dut,
+        test_name="Test 1: Continuous Data Flow",
+        stall_prob=0.0,
+        max_stall_cycles=0
+    )
 
-    # --------------------------------------------------------
-    # Initialize AXI signals
-    # --------------------------------------------------------
+    # 2. Irregular input arrivals (s_axis_tvalid stalls with small bubbles)
+    await run_intt_test_case(
+        dut,
+        test_name="Test 2: Irregular Inputs (Light Stalls)",
+        stall_prob=0.3,
+        max_stall_cycles=3
+    )
 
-    dut.s_axis_tvalid.value = 0
-    dut.s_axis_tlast.value = 0
-    dut.s_axis_tdata.value = 0
-
-    dut.m_axis_tready.value = 0
-
-    await RisingEdge(dut.clk)
-
-    # --------------------------------------------------------
-    # Start receiver
-    # --------------------------------------------------------
-
-    receive_task = cocotb.start_soon(receive_data(dut))
-
-    # --------------------------------------------------------
-    # Send NTT output into INTT engine
-    # --------------------------------------------------------
-
-    await send_data(dut, ntt_output)
-
-    # --------------------------------------------------------
-    # Wait for receiver to finish
-    # --------------------------------------------------------
-
-    received_data = await receive_task
-
-    # --------------------------------------------------------
-    # Compare RTL output with Python golden output
-    # --------------------------------------------------------
-
-    output_data = np.array(received_data, dtype=np.int64)
-
-    assert np.array_equal(output_data, intt_output), "INTT output does not match golden reference."
-
-    print("\n======================================")
-    print("          TEST PASSED")
-    print("======================================")
+    # 3. Irregular input arrivals (s_axis_tvalid stalls with longer bubbles)
+    await run_intt_test_case(
+        dut,
+        test_name="Test 3: Irregular Inputs (Heavy Stalls)",
+        stall_prob=0.6,
+        max_stall_cycles=8
+    )
