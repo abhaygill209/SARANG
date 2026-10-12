@@ -6,8 +6,9 @@ REPO_ROOT := $(abspath $(PWD)/../..)
 
 VERILOG_SOURCES := $(wildcard $(REPO_ROOT)/RTL/INTT/*.v) \
                    $(REPO_ROOT)/RTL/ButterflyUnitCT.v \
-                   $(REPO_ROOT)/RTL/Delay_unit.v \
-                   $(REPO_ROOT)/RTL/DU_FIFO.v \
+                   $(REPO_ROOT)/RTL/Delay_unit_1.v \
+                   $(REPO_ROOT)/RTL/FIFO.v \
+                   $(REPO_ROOT)/RTL/PairReorder.v \
                    $(REPO_ROOT)/RTL/TwiddleRom.v
 
 TOPLEVEL := INTT_engine_axis_wrapper

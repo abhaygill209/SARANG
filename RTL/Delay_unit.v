@@ -1,4 +1,5 @@
-module Delay_Unit #(
+
+module Delay_Unit_1 #(
     parameter DATA_WIDTH = 16,
     parameter STAGE     = 1,
     parameter DEPTH     = 6,

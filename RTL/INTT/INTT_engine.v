@@ -21,8 +21,8 @@ module INTT_engine(
     wire [`DATA_WIDTH-1:0] BU_DU_bus_a   [0:STAGES-1];
     wire [`DATA_WIDTH-1:0] BU_DU_bus_b   [0:STAGES-1];
 
-    wire [`DATA_WIDTH-1:0] DU_BU_bus_a   [1:STAGES-1];
-    wire [`DATA_WIDTH-1:0] DU_BU_bus_b   [1:STAGES-1];
+    wire [`DATA_WIDTH-1:0] DU_BU_bus_a   [1:STAGES];
+    wire [`DATA_WIDTH-1:0] DU_BU_bus_b   [1:STAGES];
 
     wire [`DATA_WIDTH-1:0] tf_data_0;
     wire [`DATA_WIDTH-1:0] tf_data_1;
@@ -33,12 +33,12 @@ module INTT_engine(
     wire [`DATA_WIDTH-1:0] tf_data_6;
     wire [`DATA_WIDTH-1:0] tf_data_7;
 
-    wire BU_DU_valid   [0:STAGES-1];
-    wire DU_BU_valid   [1:STAGES-1];
+    wire BU_DU_valid   [0:STAGES];
+    wire DU_BU_valid   [1:STAGES];
 
-    reg                   DU_BU_valid_D [0:STAGES-1];
-    reg [`DATA_WIDTH-1:0] DU_BU_bus_a_D [0:STAGES-1];
-    reg [`DATA_WIDTH-1:0] DU_BU_bus_b_D [0:STAGES-1];
+    reg                   DU_BU_valid_D [0:STAGES];
+    reg [`DATA_WIDTH-1:0] DU_BU_bus_a_D [0:STAGES];
+    reg [`DATA_WIDTH-1:0] DU_BU_bus_b_D [0:STAGES];
 
     genvar i;
     generate
@@ -76,10 +76,10 @@ module INTT_engine(
         .clk(clk),
         .rst(rst),
         .stall_i(stall_i),
-        .valid_i(BU_DU_valid[STAGES-1]),
+        .valid_i(DU_BU_valid[STAGES]),
         .valid_o(valid_o),
-        .a_i(BU_DU_bus_a[STAGES-1]),
-        .b_i(BU_DU_bus_b[STAGES-1]),
+        .a_i(DU_BU_bus_a[STAGES]),
+        .b_i(DU_BU_bus_b[STAGES]),
         .a_o(a_o),
         .b_o(b_o)
     );
@@ -121,7 +121,7 @@ module INTT_engine(
 
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
-        .STAGE(3),
+        .STAGE(2),
         .DEPTH(8)
     ) Delay_inst_2 (
         .clk_i(clk),
@@ -137,7 +137,7 @@ module INTT_engine(
 
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
-        .STAGE(4),
+        .STAGE(3),
         .DEPTH(14)
     ) Delay_inst_3 (
         .clk_i(clk),
@@ -202,7 +202,7 @@ module INTT_engine(
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
         .STAGE(7),
-        .DEPTH(128)
+        .DEPTH(194)
     ) Delay_inst_7 (
         .clk_i(clk),
         .rst_i(rst),
@@ -213,6 +213,21 @@ module INTT_engine(
         .b_i(BU_DU_bus_b[6]),
         .a_o(DU_BU_bus_a[7]),
         .b_o(DU_BU_bus_b[7])
+    );
+
+    PairReorder #(
+        .DATA_WIDTH(`DATA_WIDTH),
+        .N(256)
+    ) Delay_inst_8 (
+        .clk_i(clk),
+        .rst_i(rst),
+        .stall_i(stall_i),
+        .valid_i(BU_DU_valid[7]),
+        .valid_o(DU_BU_valid[8]),
+        .a_i(BU_DU_bus_a[7]),
+        .b_i(BU_DU_bus_b[7]),
+        .a_o(DU_BU_bus_a[8]),
+        .b_o(DU_BU_bus_b[8])
     );
 
     // Twiddle ROM

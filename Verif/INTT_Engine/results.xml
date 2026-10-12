@@ -1,8 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1791722784" />
-    <testcase name="test_intt_engine" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/INTT_Engine/tb.py" lineno="103" time="0.04012179374694824" sim_time_ns="3290.0" ratio_time="82000.32183880724">
-      <failure error_type="AssertionError" error_msg="INTT output does not match golden reference." />
-    </testcase>
+    <property name="random_seed" value="1791800288" />
+    <testcase name="test_intt_engine" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/INTT_Engine/tb.py" lineno="103" time="0.05865907669067383" sim_time_ns="3880.0" ratio_time="66144.92110846468" />
   </testsuite>
 </testsuites>
