@@ -7,6 +7,7 @@ def to_montgomery(x, q, R):
 
 
 def iterative_ntt_dif(a, q, W, R, csv_writer, print_arithmetic=True):
+
     n = len(a)
     a = np.array(a, dtype=np.int64).copy()
 
@@ -14,6 +15,7 @@ def iterative_ntt_dif(a, q, W, R, csv_writer, print_arithmetic=True):
     length = n
 
     while length >= 2:
+
         half = length // 2
         wlen = pow(W, n // length, q)
 
@@ -24,6 +26,7 @@ def iterative_ntt_dif(a, q, W, R, csv_writer, print_arithmetic=True):
         w = 1
 
         for i in range(half):
+
             twiddles.append(w)
 
             w_mont = to_montgomery(w, q, R)
@@ -41,9 +44,14 @@ def iterative_ntt_dif(a, q, W, R, csv_writer, print_arithmetic=True):
 
         print(f"\n{'=' * 70}")
         print(f"NTT STAGE {stage}")
-        print(f"Length       : {length}")
-        print(f"wlen         : {wlen}")
-        print(f"Twiddle      : {twiddles}")
+        print(f"Length                 : {length}")
+        print(f"wlen                   : {wlen}")
+        print(f"wlen Montgomery        : {to_montgomery(wlen, q, R)}")
+        print(f"Twiddle factors        : {twiddles}")
+        print(
+            f"Twiddle factors (Mont) : "
+            f"{[to_montgomery(t, q, R) for t in twiddles]}"
+        )
         print(f"{'=' * 70}")
 
         # ------------------------------------------------
@@ -52,6 +60,7 @@ def iterative_ntt_dif(a, q, W, R, csv_writer, print_arithmetic=True):
         butterfly = 0
 
         for start in range(0, n, length):
+
             w = 1
 
             for j in range(start, start + half):
@@ -59,45 +68,49 @@ def iterative_ntt_dif(a, q, W, R, csv_writer, print_arithmetic=True):
                 u = int(a[j])
                 v = int(a[j + half])
 
-                # Calculate butterfly values
+                # ----------------------------------------
+                # Normal-domain arithmetic
+                # ----------------------------------------
                 add_result = (u + v) % q
                 sub_result = (u - v) % q
                 mult_result = (sub_result * w) % q
 
-                # Print arithmetic
+                # ----------------------------------------
+                # Print arithmetic in Montgomery form
+                # ----------------------------------------
                 if print_arithmetic:
+
+                    u_m = to_montgomery(u, q, R)
+                    v_m = to_montgomery(v, q, R)
+                    w_m = to_montgomery(w, q, R)
+
+                    add_m = to_montgomery(add_result, q, R)
+                    sub_m = to_montgomery(sub_result, q, R)
+                    mult_m = to_montgomery(mult_result, q, R)
+
                     print(
                         f"\nNTT Stage {stage} | "
                         f"Butterfly {butterfly}"
                     )
 
-                    print(f"  Index       : {j}, {j + half}")
-                    print(f"  u           : {u}")
-                    print(f"  v           : {v}")
-                    print(f"  w           : {w}")
-                    print(f"  wlen        : {wlen}")
+                    print(f"  Index           : {j}, {j + half}")
+
+                    print(f"  u               = {u_m}")
+                    print(f"  v               = {v_m}")
+                    print(f"  w               = {w_m}")
+
+                    print(f"  u + v           = {add_m}")
+                    print(f"  u - v           = {sub_m}")
+                    print(f"  (u-v) * w       = {mult_m}")
 
                     print(
-                        f"  u + v       : "
-                        f"({u} + {v}) mod {q} = {add_result}"
+                        f"  Output          = "
+                        f"[{add_m}, {mult_m}]"
                     )
 
-                    print(
-                        f"  u - v       : "
-                        f"({u} - {v}) mod {q} = {sub_result}"
-                    )
-
-                    print(
-                        f"  (u-v) * w   : "
-                        f"({sub_result} * {w}) mod {q} = {mult_result}"
-                    )
-
-                    print(
-                        f"  Output       : "
-                        f"[{add_result}, {mult_result}]"
-                    )
-
-                # Update array
+                # ----------------------------------------
+                # Update array using normal-domain values
+                # ----------------------------------------
                 a[j] = add_result
                 a[j + half] = mult_result
 
@@ -105,7 +118,14 @@ def iterative_ntt_dif(a, q, W, R, csv_writer, print_arithmetic=True):
                 butterfly += 1
 
         print(f"\nNTT output after stage {stage}:")
+
+        print("Normal domain:")
         print(a)
+
+        print("Montgomery domain:")
+        print(
+            [to_montgomery(int(x), q, R) for x in a]
+        )
 
         length //= 2
         stage += 1

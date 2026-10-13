@@ -1,461 +1,175 @@
-"""
-Cocotb Testbench for NTT_engine.
+'''
+Take values from /home/abhay/OpenSource/PQC_ASIC/Algo/Input_output_NTT_INTT.csv
+Compare input and output values with RTL simulation results
 
-Module Under Test:
-  NTT_engine: Pipelined 8-stage streaming Number Theoretic Transform (NTT) core
-              for polynomial length N=256, modulus Q=3329 (Kyber / Dilithium).
-
-Verification Suite:
-  1. test_csv_golden_stage_values:
-     Verifies bitstream inputs against Algo/stage_values.csv (normal domain)
-     and Algo/montgomery_stage_values.csv (Montgomery domain).
-  2. test_continuous_multi_frame_streaming:
-     Streams consecutive 256-point polynomial frames back-to-back at full throughput.
-  3. test_multi_frame_with_random_gaps:
-     Streams multiple polynomial frames separated by arbitrary idle cycles.
-  4. test_random_polynomial_transforms:
-     Generates random polynomials in standard integer range [0, Q-1], converts to
-     Montgomery domain, executes NTT in DUT, converts back, and verifies bit-accuracy.
-  5. test_corner_cases:
-     Tests extreme input patterns (all-zero, all Q-1, alternating extremes, delta impulses).
-  6. test_mid_stream_reset_recovery:
-     Asserts synchronous reset mid-computation and verifies clean recovery on subsequent frames.
-  7. test_frame_latency_and_throughput:
-     Measures and asserts exact pipeline latency and sustained throughput.
-"""
-
-import csv
+AXI Verification Tests:
+    |-> Validity of input and output data (ideal continuous flow)
+    |-> Non-continuous data flow (input valid stalls / irregular input arrival)
+'''
+import csv 
 import random
-import sys
-from pathlib import Path
+import numpy as np
 
 import cocotb
+from cocotb.triggers import RisingEdge, Timer
 from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles, RisingEdge, Timer
 
-# -----------------------------------------------------------------------------
-# Path and Arithmetic Setup
-# -----------------------------------------------------------------------------
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-sys.path.append(str(REPO_ROOT / "Algo"))
-from MontgomeryMul import Montgomery
+input_vals = []
+ntt_output = []
+intt_output = []
 
-Q = 7681
-R = 2**16
-N = 256
-NUM_PAIRS = N // 2  # 128 pairs per 256-point NTT frame
-STAGES = 8
+with open("/home/abhay/OpenSource/PQC_ASIC/Algo/Input_output_NTT_INTT.csv", "r") as f:
+    reader = csv.reader(f)
+    next(reader)  # Skip header row
 
-mont = Montgomery(Q, R)
+    for row in reader: 
+        input_vals.append(int(row[1]))   # Input values
+        ntt_output.append(int(row[2]))   # NTT output values
+        intt_output.append(int(row[3]))  # INTT output values
 
-
-# -----------------------------------------------------------------------------
-# Helper Functions & Golden Reference Model
-# -----------------------------------------------------------------------------
-def load_csv_stages(csv_path: Path):
-    """Load stage values from CSV file into a list of integer rows."""
-    with open(csv_path, newline="", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        return [[int(val) for val in row] for row in reader if row]
-
-
-def reorder_delay_unit_block(input_pairs, stage):
-    """Golden permutation model for a single block of 2^stage pairs in Delay_Unit."""
-    k = 1 << (stage - 1)
-    buf1 = []
-    for a, b in input_pairs[:k]:
-        buf1.extend([a, b])
-    buf2 = []
-    for a, b in input_pairs[k:]:
-        buf2.extend([a, b])
-    return list(zip(buf1, buf2))
-
-
-def reorder_delay_unit_stream(input_pairs, stage):
-    """Golden permutation model for a stream of blocks in Delay_Unit."""
-    block_size = 1 << stage
-    output_pairs = []
-    for i in range(0, len(input_pairs), block_size):
-        block = input_pairs[i : i + block_size]
-        output_pairs.extend(reorder_delay_unit_block(block, stage))
-    return output_pairs
-
-
-def load_twiddle_factors():
-    """Load hardware twiddle factor ROM values for all 8 stages."""
-    twiddles = [[0x0FF8]]  # Stage 0 hardcoded constant (Montgomery of 1)
-    for s in range(2, 9):
-        mem_path = REPO_ROOT / f"RTL/TwiddleFactorsGen/stage_{s}.mem"
-        with open(mem_path, "r", encoding="utf-8") as f:
-            twiddles.append([int(line.strip(), 16) for line in f if line.strip()])
-    return twiddles
-
-
-HW_TWIDDLES = load_twiddle_factors()
-
-
-def golden_ntt_engine_model(input_pairs_mont):
-    """
-    Bit-accurate cycle-level reference model of the 8-stage pipelined NTT hardware engine.
-    Takes 128 input pairs in Montgomery domain and returns 128 output pairs in Montgomery domain.
-    """
-    assert len(input_pairs_mont) == NUM_PAIRS, f"Expected {NUM_PAIRS} pairs, got {len(input_pairs_mont)}"
-    cur_pairs = list(input_pairs_mont)
-
-    for stg in range(STAGES):
-        out_pairs = []
-        tf_list = HW_TWIDDLES[stg]
-        for idx, (a, b) in enumerate(cur_pairs):
-            w = tf_list[idx % len(tf_list)]
-            bw = mont.redc(b * w)
-            a_out = (a + bw) % Q
-            b_out = (a - bw + Q) % Q
-            out_pairs.append((a_out, b_out))
-
-        if stg < STAGES - 1:
-            cur_pairs = reorder_delay_unit_stream(out_pairs, stg + 1)
-        else:
-            cur_pairs = out_pairs
-
-    return cur_pairs
-
-
-# -----------------------------------------------------------------------------
-# Driving and Monitoring Driver
-# -----------------------------------------------------------------------------
-async def start_clock(dut, period_ns=10):
-    """Start clock generator."""
-    clock = Clock(dut.clk, period_ns, unit="ns")
+async def start_clock(dut, period=10):
+    """Start the clock for the DUT."""
+    clock = Clock(dut.clk, period, unit="ns")
     cocotb.start_soon(clock.start())
 
-
 async def reset_dut(dut):
-    """Apply synchronous reset sequence."""
-    dut._log.info("[RESET] Asserting reset (rst=1)...")
-    dut.rst.value = 1
-    dut.valid_i.value = 0
-    dut.stall_i.value = 0
-    dut.a_i.value = 0
-    dut.b_i.value = 0
-    await ClockCycles(dut.clk, 5)
-    dut.rst.value = 0
+    """Reset the DUT and initialize control signals."""
+    dut.aresetn.value = 0
+    dut.s_axis_tvalid.value = 0
+    dut.s_axis_tlast.value = 0
+    dut.s_axis_tdata.value = 0
+    dut.m_axis_tready.value = 1
+    await Timer(20, unit="ns")
     await RisingEdge(dut.clk)
-    await Timer(1, unit="ns")
-    dut._log.info("[RESET] Reset sequence complete.")
+    dut.aresetn.value = 1
+    await RisingEdge(dut.clk)
 
-
-async def run_ntt_frames(
-    dut,
-    frames_input_pairs,
-    inter_frame_gaps=None,
-    max_cycles_per_frame=2000,
-):
+async def send_data(dut, data, stall_prob=0.0, max_stall_cycles=0):
     """
-    Drive multiple consecutive 256-point NTT frames (128 pairs each),
-    collect output frames when valid_o asserts, and verify against golden reference model.
+    Send 16-bit values packed two per AXI-Stream word.
+    
+    Args:
+        dut: Device under test
+        data: List of values to send
+        stall_prob: Probability (0.0 to 1.0) of inserting idle stall cycles before a valid handshake
+        max_stall_cycles: Maximum duration of idle cycle bursts when stalling occurs
     """
-    num_frames = len(frames_input_pairs)
-    if inter_frame_gaps is None:
-        inter_frame_gaps = [0] * num_frames
+    dut.s_axis_tvalid.value = 0
+    dut.s_axis_tlast.value = 0
 
-    expected_frames = [golden_ntt_engine_model(frame) for frame in frames_input_pairs]
+    await RisingEdge(dut.clk)
 
-    collected_frames = []
-    current_frame_outputs = []
+    num_words = (len(data) + 1) // 2
 
-    frame_idx = 0
-    pair_in_frame = 0
-    gap_remaining = 0
-    cycle = 0
-    first_valid_cycle = None
+    for word_idx in range(num_words):
+        i = word_idx
 
-    while len(collected_frames) < num_frames:
-        # Drive input stream
-        if gap_remaining > 0:
-            dut.valid_i.value = 0
-            dut.a_i.value = 0
-            dut.b_i.value = 0
-            gap_remaining -= 1
-        elif frame_idx < num_frames:
-            a_val, b_val = frames_input_pairs[frame_idx][pair_in_frame]
-            dut.valid_i.value = 1
-            dut.a_i.value = a_val
-            dut.b_i.value = b_val
-            pair_in_frame += 1
-            if pair_in_frame == NUM_PAIRS:
-                pair_in_frame = 0
-                frame_idx += 1
-                if frame_idx < num_frames:
-                    gap_remaining = inter_frame_gaps[frame_idx]
-        else:
-            dut.valid_i.value = 0
-            dut.a_i.value = 0
-            dut.b_i.value = 0
+        # Model irregular input arrival / non-continuous flow (tvalid deassertion stalls)
+        if stall_prob > 0.0 and random.random() < stall_prob:
+            stall_cycles = random.randint(1, max(1, max_stall_cycles))
+            dut.s_axis_tvalid.value = 0
+            dut.s_axis_tlast.value = 0
+            for _ in range(stall_cycles):
+                await RisingEdge(dut.clk)
 
+        # Pack two 16-bit values into one 64-bit word (two 32-bit slots)
+        low = int(data[i]) & 0xFFFFFFFF
+        high = int(data[len(data) // 2 + i]) & 0xFFFFFFFF if i + 1 < len(data) else 0
+
+        dut.s_axis_tdata.value = low | (high << 32)
+        is_last = 1 if (word_idx == num_words - 1) else 0
+        dut.s_axis_tlast.value = is_last
+        dut.s_axis_tvalid.value = 1
+
+        # Wait until transfer handshake actually completes (tvalid=1 and tready=1 on posedge)
+        while True:
+            await RisingEdge(dut.clk)
+            if dut.s_axis_tready.value == 1:
+                break
+
+    # Deassert signals after packet transmission is complete
+    dut.s_axis_tvalid.value = 0
+    dut.s_axis_tlast.value = 0
+
+async def receive_data(dut):
+    """
+    Receive 64-bit AXI-Stream words and unpack them into 32-bit values.
+    m_axis_tready is held high so the DUT can continuously stream out data.
+    """
+    received_data = []
+    dut.m_axis_tready.value = 1
+
+    while True:
         await RisingEdge(dut.clk)
-        await Timer(1, unit="ns")
 
-        # Monitor valid output pairs
-        if int(dut.valid_o.value) == 1:
-            if first_valid_cycle is None:
-                first_valid_cycle = cycle
-                dut._log.info(f"[TIMING] First valid_o detected at cycle {cycle}.")
+        # Check for successful handshake
+        if dut.m_axis_tvalid.value == 1 and dut.m_axis_tready.value == 1:
+            word = int(dut.m_axis_tdata.value)
 
-            a_out = int(dut.a_o.value)
-            b_out = int(dut.b_o.value)
-            current_frame_outputs.append((a_out, b_out))
+            # Extract two 32-bit values
+            low = word & 0xFFFFFFFF
+            high = (word >> 32) & 0xFFFFFFFF
 
-            if len(current_frame_outputs) == NUM_PAIRS:
-                f_num = len(collected_frames) + 1
-                dut._log.info(f"[FRAME {f_num}/{num_frames}] Fully received 128 output pairs.")
-                collected_frames.append(list(current_frame_outputs))
-                current_frame_outputs = []
+            received_data.append(low)
+            received_data.append(high)
 
-        cycle += 1
-        assert cycle < num_frames * max_cycles_per_frame, f"Simulation timeout after {cycle} cycles"
+            # End of packet indicated by tlast
+            if dut.m_axis_tlast.value == 1:
+                break
 
-    # Drive idle
-    dut.valid_i.value = 0
-    dut.a_i.value = 0
-    dut.b_i.value = 0
-    await RisingEdge(dut.clk)
-    await Timer(1, unit="ns")
-
-    # Verification against golden model
-    assert len(collected_frames) == num_frames, f"Expected {num_frames} frames, got {len(collected_frames)}"
-    for f_idx, (got_frame, exp_frame) in enumerate(zip(collected_frames, expected_frames)):
-        for p_idx, (got_p, exp_p) in enumerate(zip(got_frame, exp_frame)):
-            assert got_p == exp_p, (
-                f"Frame {f_idx} Pair {p_idx} mismatch: got a_o={got_p[0]}, b_o={got_p[1]} | "
-                f"expected a_o={exp_p[0]}, b_o={exp_p[1]}"
-            )
-
-    dut._log.info(f"[VERIFIED] Successfully verified {num_frames} frames against golden model.")
-    return collected_frames, first_valid_cycle
+    return received_data
 
 
-# =============================================================================
-# Verification Tests
-# =============================================================================
+async def run_ntt_test_case(dut, test_name, stall_prob=0.0, max_stall_cycles=0):
+    """Helper to run a complete reset-drive-receive-verify test cycle."""
+    cocotb.log.info("==================================================")
+    cocotb.log.info(f" RUNNING: {test_name}")
+    cocotb.log.info(f" stall_prob={stall_prob}, max_stall_cycles={max_stall_cycles}")
+    cocotb.log.info("==================================================")
 
-@cocotb.test()
-async def test_csv_golden_stage_values(dut):
-    """
-    Test 1: Verification using bitstream inputs from Algo/stage_values.csv
-    and Algo/montgomery_stage_values.csv across both normal and Montgomery domains.
-    """
-    dut._log.info("================================================================================")
-    dut._log.info("Test 1: Algo CSV Golden Stage Values Verification")
-    dut._log.info("================================================================================")
-    await start_clock(dut)
     await reset_dut(dut)
 
-    # 1. Load CSV stage files
-    stage_vals_normal = load_csv_stages(REPO_ROOT / "Algo" / "stage_values.csv")
-    stage_vals_mont = load_csv_stages(REPO_ROOT / "Algo" / "montgomery_stage_values.csv")
+    recv_task = cocotb.start_soon(receive_data(dut))
+    await send_data(dut, input_vals, stall_prob=stall_prob, max_stall_cycles=max_stall_cycles)
 
-    normal_inputs = stage_vals_normal[0]
-    mont_inputs = stage_vals_mont[0]
+    received_data = await recv_task
+    output_data = np.array(received_data[:len(ntt_output)], dtype=np.int64)
 
-    dut._log.info(f"Loaded {len(stage_vals_normal)} stages from CSV files.")
+    cocotb.log.info(f"First 10 expected NTT values: {ntt_output[:10]}")
+    cocotb.log.info(f"First 10 received RTL values: {list(output_data[:10])}")
 
-    # 2. Verify domain conversion correctness
-    for i in range(N):
-        assert mont.to_mont(normal_inputs[i]) == mont_inputs[i], f"Montgomery conversion mismatch at index {i}"
-        assert mont.from_mont(mont_inputs[i]) == normal_inputs[i], f"Normal conversion mismatch at index {i}"
-
-    # 3. Stream input pairs to DUT
-    input_pairs = [(mont_inputs[2 * i], mont_inputs[2 * i + 1]) for i in range(NUM_PAIRS)]
-    dut._log.info(f"Driving {NUM_PAIRS} pairs (256 values) into NTT_engine...")
-
-    collected, latency = await run_ntt_frames(dut, [input_pairs])
-    dut_frame = collected[0]
-
-    # 4. Check Montgomery-domain and Normal-domain output representations
-    dut_output_mont_a = [p[0] for p in dut_frame]
-    dut_output_mont_b = [p[1] for p in dut_frame]
-    dut_output_normal_a = [mont.from_mont(v) for v in dut_output_mont_a]
-    dut_output_normal_b = [mont.from_mont(v) for v in dut_output_mont_b]
-
-    dut._log.info(f"First 4 Montgomery outputs a_o: {dut_output_mont_a[:4]}")
-    dut._log.info(f"First 4 Montgomery outputs b_o: {dut_output_mont_b[:4]}")
-    dut._log.info(f"First 4 Normal-domain outputs a_o: {dut_output_normal_a[:4]}")
-    dut._log.info(f"First 4 Normal-domain outputs b_o: {dut_output_normal_b[:4]}")
-
-    dut._log.info("Test 1: CSV Golden Stage Values PASSED\n")
+    assert np.array_equal(output_data, ntt_output), (
+        f"{test_name}: Mismatch found! Received {len(output_data)} values."
+    )
+    cocotb.log.info(f"PASSED: {test_name}")
 
 
 @cocotb.test()
-async def test_continuous_multi_frame_streaming(dut):
-    """
-    Test 2: Continuous multi-frame streaming without idle bubbles.
-    Verifies full-throughput back-to-back execution over 6 consecutive frames.
-    """
-    dut._log.info("================================================================================")
-    dut._log.info("Test 2: Continuous Multi-Frame Streaming (Full Throughput)")
-    dut._log.info("================================================================================")
+async def test_ntt_all(dut):
+    """NTT verification covering continuous flow and irregular input stalls."""
+    # Start clock
     await start_clock(dut)
-    await reset_dut(dut)
 
-    rng = random.Random(1001)
-    num_frames = 6
-    frames = []
+    # 1. Baseline continuous flow
+    await run_ntt_test_case(
+        dut,
+        test_name="Test 1: Continuous Data Flow",
+        stall_prob=0.0,
+        max_stall_cycles=0
+    )
 
-    for f in range(num_frames):
-        poly_normal = [rng.randint(0, Q - 1) for _ in range(N)]
-        poly_mont = [mont.to_mont(x) for x in poly_normal]
-        frames.append([(poly_mont[2 * i], poly_mont[2 * i + 1]) for i in range(NUM_PAIRS)])
+    # 2. Irregular input arrivals (s_axis_tvalid stalls with small bubbles)
+    await run_ntt_test_case(
+        dut,
+        test_name="Test 2: Irregular Inputs (Light Stalls)",
+        stall_prob=0.3,
+        max_stall_cycles=3
+    )
 
-    dut._log.info(f"Streaming {num_frames} frames ({num_frames * NUM_PAIRS} pairs) back-to-back...")
-    await run_ntt_frames(dut, frames)
-    dut._log.info("Test 2: Continuous Multi-Frame Streaming PASSED\n")
-
-
-@cocotb.test()
-async def test_multi_frame_with_random_gaps(dut):
-    """
-    Test 3: Multi-frame streaming with random idle cycles between frames.
-    Simulates bursts of polynomial operations separated by idle intervals.
-    """
-    dut._log.info("================================================================================")
-    dut._log.info("Test 3: Multi-Frame Streaming with Inter-Frame Gaps")
-    dut._log.info("================================================================================")
-    await start_clock(dut)
-    await reset_dut(dut)
-
-    rng = random.Random(2002)
-    num_frames = 4
-    frames = []
-    gaps = [0] + [rng.randint(5, 25) for _ in range(num_frames - 1)]
-
-    for f in range(num_frames):
-        poly = [mont.to_mont(rng.randint(0, Q - 1)) for _ in range(N)]
-        frames.append([(poly[2 * i], poly[2 * i + 1]) for i in range(NUM_PAIRS)])
-
-    dut._log.info(f"Streaming {num_frames} frames with idle gaps {gaps}...")
-    await run_ntt_frames(dut, frames, inter_frame_gaps=gaps)
-    dut._log.info("Test 3: Multi-Frame with Inter-Frame Gaps PASSED\n")
-
-
-@cocotb.test()
-async def test_random_polynomial_transforms(dut):
-    """
-    Test 4: Randomized polynomial transforms.
-    Tests arbitrary pseudo-random input polynomials in the modular ring Z_q.
-    """
-    dut._log.info("================================================================================")
-    dut._log.info("Test 4: Randomized Polynomial Transforms")
-    dut._log.info("================================================================================")
-    await start_clock(dut)
-    await reset_dut(dut)
-
-    rng = random.Random(3003)
-    num_frames = 5
-    frames = []
-
-    for f in range(num_frames):
-        poly = [mont.to_mont(rng.randint(0, Q - 1)) for _ in range(N)]
-        frames.append([(poly[2 * i], poly[2 * i + 1]) for i in range(NUM_PAIRS)])
-
-    dut._log.info(f"Testing {num_frames} randomized polynomial frames...")
-    await run_ntt_frames(dut, frames)
-    dut._log.info("Test 4: Randomized Polynomial Transforms PASSED\n")
-
-
-@cocotb.test()
-async def test_corner_cases(dut):
-    """
-    Test 5: Corner cases (all-zero, all Q-1, alternating extremes, single delta impulses).
-    """
-    dut._log.info("================================================================================")
-    dut._log.info("Test 5: Corner Case Data Values")
-    dut._log.info("================================================================================")
-    await start_clock(dut)
-    await reset_dut(dut)
-
-    # Frame 1: All zeros
-    f1_mont = [mont.to_mont(0) for _ in range(N)]
-    f1_pairs = [(f1_mont[2 * i], f1_mont[2 * i + 1]) for i in range(NUM_PAIRS)]
-
-    # Frame 2: All Q-1 (3328)
-    f2_mont = [mont.to_mont(Q - 1) for _ in range(N)]
-    f2_pairs = [(f2_mont[2 * i], f2_mont[2 * i + 1]) for i in range(NUM_PAIRS)]
-
-    # Frame 3: Alternating (0, Q-1)
-    f3_mont = [mont.to_mont(0 if i % 2 == 0 else Q - 1) for i in range(N)]
-    f3_pairs = [(f3_mont[2 * i], f3_mont[2 * i + 1]) for i in range(NUM_PAIRS)]
-
-    # Frame 4: Delta impulse at index 0 (1, 0, 0, ...)
-    f4_mont = [mont.to_mont(1 if i == 0 else 0) for i in range(N)]
-    f4_pairs = [(f4_mont[2 * i], f4_mont[2 * i + 1]) for i in range(NUM_PAIRS)]
-
-    frames = [f1_pairs, f2_pairs, f3_pairs, f4_pairs]
-    dut._log.info("Running 4 corner-case frames...")
-    await run_ntt_frames(dut, frames)
-    dut._log.info("Test 5: Corner Cases PASSED\n")
-
-
-@cocotb.test()
-async def test_mid_stream_reset_recovery(dut):
-    """
-    Test 6: Assert synchronous reset mid-computation and verify clean recovery on next frame.
-    """
-    dut._log.info("================================================================================")
-    dut._log.info("Test 6: Mid-Stream Reset Recovery")
-    dut._log.info("================================================================================")
-    await start_clock(dut)
-    await reset_dut(dut)
-
-    # Drive 50 cycles of partial dummy frame
-    dut._log.info("Driving 50 cycles of data prior to mid-stream reset...")
-    dut.valid_i.value = 1
-    dut.a_i.value = 0x123
-    dut.b_i.value = 0x456
-    await ClockCycles(dut.clk, 50)
-
-    # Assert synchronous reset
-    dut._log.info("Asserting synchronous reset (rst=1)...")
-    dut.rst.value = 1
-    dut.valid_i.value = 0
-    await ClockCycles(dut.clk, 5)
-    dut.rst.value = 0
-    await RisingEdge(dut.clk)
-    await Timer(1, unit="ns")
-
-    assert int(dut.valid_o.value) == 0, "valid_o must be 0 after reset deassertion"
-
-    # Drive fresh frame and verify
-    rng = random.Random(6006)
-    poly = [mont.to_mont(rng.randint(0, Q - 1)) for _ in range(N)]
-    fresh_frame = [(poly[2 * i], poly[2 * i + 1]) for i in range(NUM_PAIRS)]
-
-    dut._log.info("Driving fresh frame to verify complete reset recovery...")
-    await run_ntt_frames(dut, [fresh_frame])
-    dut._log.info("Test 6: Mid-Stream Reset Recovery PASSED\n")
-
-
-@cocotb.test()
-async def test_frame_latency_and_throughput(dut):
-    """
-    Test 7: Measures exact frame latency and verifies sustained 100% throughput across 4 frames.
-    """
-    dut._log.info("================================================================================")
-    dut._log.info("Test 7: Pipeline Latency and Sustained Throughput Verification")
-    dut._log.info("================================================================================")
-    await start_clock(dut)
-    await reset_dut(dut)
-
-    rng = random.Random(7007)
-    num_frames = 4
-    frames = []
-
-    for f in range(num_frames):
-        poly = [mont.to_mont(rng.randint(0, Q - 1)) for _ in range(N)]
-        frames.append([(poly[2 * i], poly[2 * i + 1]) for i in range(NUM_PAIRS)])
-
-    collected, latency = await run_ntt_frames(dut, frames)
-
-    dut._log.info(f"[METRIC] Measured NTT_engine pipeline latency = {latency} clock cycles.")
-    dut._log.info(f"[METRIC] Total output pairs collected = {len(collected) * NUM_PAIRS}.")
-    assert latency > 0, "Pipeline latency must be positive"
-    dut._log.info("Test 7: Frame Latency and Throughput PASSED\n")
+    # 3. Irregular input arrivals (s_axis_tvalid stalls with longer bubbles)
+    await run_ntt_test_case(
+        dut,
+        test_name="Test 3: Irregular Inputs (Heavy Stalls)",
+        stall_prob=0.6,
+        max_stall_cycles=8
+    )

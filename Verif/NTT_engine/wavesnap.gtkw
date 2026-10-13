@@ -1,0 +1,130 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Tue Oct 13 18:36:09 2026
+[*]
+[dumpfile] "/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/waveform.vcd"
+[dumpfile_mtime] "Tue Oct 13 18:35:37 2026"
+[dumpfile_size] 7445613
+[savefile] "/home/abhay/OpenSource/PQC_ASIC/Verif/NTT_engine/wavesnap.gtkw"
+[timestart] 4784000
+[size] 1920 1016
+[pos] -1 -1
+*-14.956171 4375300 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] NTT_engine_axis_wrapper.
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[0].
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[1].
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[2].
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[3].
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[4].
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[5].
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[6].
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[7].
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.
+[treeopen] NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.
+[sst_width] 233
+[signals_width] 339
+[sst_expanded] 1
+[sst_vpaned_height] 280
+@200
+-Butterfly 1
+@24
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[0].butterfly_inst.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[0].butterfly_inst.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[0].butterfly_inst.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[0].butterfly_inst.b_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[0].butterfly_inst.w[31:0]
+@200
+-Delay Unit 1
+@28
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.valid_i
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.write_fifo_1_2
+@29
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.write_fifo_3_4
+@28
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.state
+@24
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.b_o[31:0]
+@28
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.valid_o
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.read_pair1
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.read_pair2
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.fifo_1_3_available
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_1.fifo_2_4_available
+@200
+-Butterfly 2
+@24
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[1].butterfly_inst.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[1].butterfly_inst.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[1].butterfly_inst.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[1].butterfly_inst.b_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[1].butterfly_inst.w[31:0]
+@200
+-Delay Unit 2
+@24
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.b_o[31:0]
+@28
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.stall_i
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.valid_i
+@24
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.counter[6:0]
+@28
+NTT_engine_axis_wrapper.ntt_inst.Delay_inst_2.valid_o
+@200
+-Butterfly 3
+@24
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[2].butterfly_inst.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[2].butterfly_inst.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[2].butterfly_inst.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[2].butterfly_inst.b_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[2].butterfly_inst.w[31:0]
+@200
+-Butterfly 4
+@24
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[3].butterfly_inst.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[3].butterfly_inst.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[3].butterfly_inst.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[3].butterfly_inst.b_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[3].butterfly_inst.w[31:0]
+@200
+-Butterfly 5
+@24
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[4].butterfly_inst.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[4].butterfly_inst.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[4].butterfly_inst.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[4].butterfly_inst.b_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[4].butterfly_inst.w[31:0]
+@200
+-Butterfly 6
+@24
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[5].butterfly_inst.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[5].butterfly_inst.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[5].butterfly_inst.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[5].butterfly_inst.b_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[5].butterfly_inst.w[31:0]
+@200
+-Butterfly 7
+@24
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[6].butterfly_inst.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[6].butterfly_inst.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[6].butterfly_inst.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[6].butterfly_inst.b_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[6].butterfly_inst.w[31:0]
+@200
+-Butterfly 8
+@24
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[7].butterfly_inst.a_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[7].butterfly_inst.b_i[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[7].butterfly_inst.a_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[7].butterfly_inst.b_o[31:0]
+NTT_engine_axis_wrapper.ntt_inst.butterfly_gen[7].butterfly_inst.w[31:0]
+NTT_engine_axis_wrapper.a_o[31:0]
+NTT_engine_axis_wrapper.b_o[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

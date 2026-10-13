@@ -12,17 +12,15 @@ module NTT_engine(
     localparam integer STAGES = $clog2(`N);
 
     // Binary input
-    always @(*) begin
-        DU_BU_bus_a_D[0] = a_i;
-        DU_BU_bus_b_D[0] = b_i;
-        DU_BU_valid_D[0] = valid_i;
-    end
+    assign DU_BU_bus_a[0] = a_i;
+    assign DU_BU_bus_b[0] = b_i;
+    assign DU_BU_valid[0] = valid_i;
 
     wire [`DATA_WIDTH-1:0] BU_DU_bus_a   [0:STAGES-1];
     wire [`DATA_WIDTH-1:0] BU_DU_bus_b   [0:STAGES-1];
 
-    wire [`DATA_WIDTH-1:0] DU_BU_bus_a   [1:STAGES-1];
-    wire [`DATA_WIDTH-1:0] DU_BU_bus_b   [1:STAGES-1];
+    wire [`DATA_WIDTH-1:0] DU_BU_bus_a   [0:STAGES-1];
+    wire [`DATA_WIDTH-1:0] DU_BU_bus_b   [0:STAGES-1];
 
     wire [`DATA_WIDTH-1:0] tf_data_0;
     wire [`DATA_WIDTH-1:0] tf_data_1;
@@ -34,7 +32,7 @@ module NTT_engine(
     wire [`DATA_WIDTH-1:0] tf_data_7;
 
     wire BU_DU_valid   [0:STAGES-1];
-    wire DU_BU_valid   [1:STAGES-1];
+    wire DU_BU_valid   [0:STAGES-1];
 
     reg                   DU_BU_valid_D [0:STAGES-1];
     reg [`DATA_WIDTH-1:0] DU_BU_bus_a_D [0:STAGES-1];
@@ -43,7 +41,7 @@ module NTT_engine(
     genvar i;
     generate
         for (i = 0; i < STAGES; i = i + 1) begin : butterfly_gen
-            ButterflyUnitCT #(
+            ButterflyUnitGS #(
                 .DATA_WIDTH(`DATA_WIDTH),
                 .Q(`Q),
                 .Q_WIDTH(`Q_WIDTH),
@@ -74,7 +72,7 @@ module NTT_engine(
 
     genvar g;
     generate
-        for(g = 1; g < STAGES; g = g + 1) begin : delay
+        for(g = 0; g < STAGES; g = g + 1) begin : delay
             always @(posedge clk) begin
                 if (rst) begin
                     DU_BU_valid_D[g] <= 1'b0;
@@ -97,8 +95,8 @@ module NTT_engine(
 
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
-        .STAGE(1),
-        .DEPTH(6)
+        .STAGE(7),
+        .DEPTH(194)
     ) Delay_inst_1 (
         .clk_i(clk),
         .rst_i(rst),
@@ -113,8 +111,8 @@ module NTT_engine(
 
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
-        .STAGE(2),
-        .DEPTH(8)
+        .STAGE(6),
+        .DEPTH(98)
     ) Delay_inst_2 (
         .clk_i(clk),
         .rst_i(rst),
@@ -129,8 +127,8 @@ module NTT_engine(
 
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
-        .STAGE(3),
-        .DEPTH(14)
+        .STAGE(5),
+        .DEPTH(50)
     ) Delay_inst_3 (
         .clk_i(clk),
         .rst_i(rst),
@@ -161,8 +159,8 @@ module NTT_engine(
 
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
-        .STAGE(5),
-        .DEPTH(50)
+        .STAGE(3),
+        .DEPTH(14)
     ) Delay_inst_5 (
         .clk_i(clk),
         .rst_i(rst),
@@ -177,8 +175,8 @@ module NTT_engine(
 
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
-        .STAGE(6),
-        .DEPTH(98)
+        .STAGE(2),
+        .DEPTH(8)
     ) Delay_inst_6 (
         .clk_i(clk),
         .rst_i(rst),
@@ -193,8 +191,8 @@ module NTT_engine(
 
     Delay_Unit #(
         .DATA_WIDTH(`DATA_WIDTH),
-        .STAGE(7),
-        .DEPTH(128)
+        .STAGE(1),
+        .DEPTH(6)
     ) Delay_inst_7 (
         .clk_i(clk),
         .rst_i(rst),
@@ -208,13 +206,25 @@ module NTT_engine(
     );
 
     // Twiddle ROM
-    reg [`ADDR_WIDTH-1:0] tf_addr [1:STAGES-1];
+    reg [`ADDR_WIDTH-1:0] tf_addr [0:STAGES-1];
 
     TwiddleROM #(
-        .STAGE(1),
+        .STAGE(7),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactorsGen/intt/stage_2.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/ntt/stage_1.mem")
+    ) t_rom_0 (
+        .clk(clk),
+        .stall_i(stall_i),
+        .dout(tf_data_0),
+        .addr(tf_addr[0])
+    );
+
+    TwiddleROM #(
+        .STAGE(6),
+        .DATA_WIDTH(`DATA_WIDTH),
+        .ADDR_WIDTH(`ADDR_WIDTH),
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/ntt/stage_2.mem")
     ) t_rom_1 (
         .clk(clk),
         .stall_i(stall_i),
@@ -223,10 +233,10 @@ module NTT_engine(
     );
 
     TwiddleROM #(
-        .STAGE(2),
+        .STAGE(5),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactorsGen/intt/stage_3.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/ntt/stage_3.mem")
     ) t_rom_2 (
         .clk(clk),
         .stall_i(stall_i),
@@ -235,10 +245,10 @@ module NTT_engine(
     );
 
     TwiddleROM #(
-        .STAGE(3),
+        .STAGE(4),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactorsGen/intt/stage_4.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/ntt/stage_4.mem")
     ) t_rom_3 (
         .clk(clk),
         .stall_i(stall_i),
@@ -247,10 +257,10 @@ module NTT_engine(
     );
 
     TwiddleROM #(
-        .STAGE(4),
+        .STAGE(3),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactorsGen/intt/stage_5.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/ntt/stage_5.mem")
     ) t_rom_4 (
         .clk(clk),
         .stall_i(stall_i),
@@ -259,10 +269,10 @@ module NTT_engine(
     );
 
     TwiddleROM #(
-        .STAGE(5),
+        .STAGE(2),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactorsGen/intt/stage_6.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/ntt/stage_6.mem")
     ) t_rom_5 (
         .clk(clk),
         .stall_i(stall_i),
@@ -271,10 +281,10 @@ module NTT_engine(
     );
 
     TwiddleROM #(
-        .STAGE(6),
+        .STAGE(1),
         .DATA_WIDTH(`DATA_WIDTH),
         .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactorsGen/intt/stage_7.mem")
+        .INIT_FILE("../../RTL/TwiddleFactorsGen/ntt/stage_7.mem")
     ) t_rom_6 (
         .clk(clk),
         .stall_i(stall_i),
@@ -282,34 +292,22 @@ module NTT_engine(
         .addr(tf_addr[6])
     );
 
-    TwiddleROM #(
-        .STAGE(7),
-        .DATA_WIDTH(`DATA_WIDTH),
-        .ADDR_WIDTH(`ADDR_WIDTH),
-        .INIT_FILE("../../RTL/TwiddleFactorsGen/intt/stage_8.mem")
-    ) t_rom_7 (
-        .clk(clk),
-        .stall_i(stall_i),
-        .dout(tf_data_7),
-        .addr(tf_addr[7])
-    );
-
-    assign tf_data_0 = 16'h0FF8;
+    assign tf_data_7 = 16'h0FF8;
 
     genvar k;
-    generate
-        for (k = 1; k < STAGES; k = k + 1) begin : tf_rom_ctrl_gen
-            always @(posedge clk) begin
-                if (rst)
+generate
+    for (k = 0; k < STAGES - 1; k = k + 1) begin : tf_rom_ctrl_gen
+        always @(posedge clk) begin
+            if (rst)
+                tf_addr[k] <= 0;
+            else if (DU_BU_valid[k] && !stall_i) begin
+                if (tf_addr[k] == ((1 << (STAGES - k - 1))) - 1)
                     tf_addr[k] <= 0;
-                else if (DU_BU_valid[k] && !stall_i) begin
-                    if (tf_addr[k] == (1 << k) - 1)
-                        tf_addr[k] <= 0;
-                    else
-                        tf_addr[k] <= tf_addr[k] + 1;
-                end
+                else
+                    tf_addr[k] <= tf_addr[k] + 1'b1;
             end
         end
-    endgenerate
+    end
+endgenerate
 
 endmodule
