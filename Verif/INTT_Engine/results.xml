@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1792842713" />
+    <testcase name="test_intt_all" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/INTT_Engine/tb.py" lineno="144" time="0.0697016716003418" sim_time_ns="15530.0" ratio_time="222806.70812382418" />
+  </testsuite>
+</testsuites>
