@@ -1,9 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1793121943" />
-    <testcase name="test_single_transaction_and_latency" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/PointwiseMulModule/tb.py" lineno="138" time="0.0016314983367919922" sim_time_ns="121.0" ratio_time="74164.95455209703" />
-    <testcase name="test_continuous_streaming_all_pairs" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/PointwiseMulModule/tb.py" lineno="209" time="0.008095026016235352" sim_time_ns="1401.0" ratio_time="173069.23994934175" />
-    <testcase name="test_random_stalls_streaming" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/PointwiseMulModule/tb.py" lineno="289" time="0.011514902114868164" sim_time_ns="2211.0" ratio_time="192012.05341946706" />
-    <testcase name="test_corner_cases" classname="tb" file="/home/abhay/OpenSource/PQC_ASIC/Verif/PointwiseMulModule/tb.py" lineno="364" time="0.00036907196044921875" sim_time_ns="121.0" ratio_time="327849.34366925067" />
-  </testsuite>
-</testsuites>
