@@ -19,12 +19,12 @@ module INTT_engine_axis_wrapper #(
     output wire m_axis_tlast
 );
 
-`ifdef SIMULATION
+//`ifdef SIMULATION
     initial begin
         $dumpfile("waveform.vcd");
         $dumpvars(0, NTT_engine_axis_wrapper);
     end
-`endif
+//`endif
 
     // Synchronous reset generation from active-low aresetn
     reg rst_sync_0, rst_sync_1;
@@ -40,17 +40,19 @@ module INTT_engine_axis_wrapper #(
     wire rst = rst_sync_1;
 
     // Data width mapping (DATA_WIDTH = 32)
-    localparam DATA_WIDTH = 32;
+    localparam DATA_WIDTH = 16;
 
-    wire [DATA_WIDTH-1:0] a_i;
-    wire [DATA_WIDTH-1:0] b_i;
-    wire [DATA_WIDTH-1:0] a_o;
-    wire [DATA_WIDTH-1:0] b_o;
+    wire [DATA_WIDTH-1:0] a1, a2;
+    wire [DATA_WIDTH-1:0] b1, b2;
+    wire [DATA_WIDTH-1:0] a_pmul_intt, b_pmul_intt;
+    wire [DATA_WIDTH-1:0] a_o, b_o;
     wire core_valid_o;
 
-    // Split 64-bit input into two 32-bit operands
-    assign a_i = s_axis_tdata[DATA_WIDTH-1:0];
-    assign b_i = s_axis_tdata[2*DATA_WIDTH-1:DATA_WIDTH];
+    // Split 64-bit input into four 16-bit operands
+    assign a1 = s_axis_tdata[DATA_WIDTH-1:0];
+    assign b1 = s_axis_tdata[2*DATA_WIDTH-1:DATA_WIDTH];
+    assign a2 = s_axis_tdata[3*DATA_WIDTH-1:2*DATA_WIDTH];
+    assign b2 = s_axis_tdata[4*DATA_WIDTH-1:3*DATA_WIDTH];
 
     // Flow control & Occupancy Tracking
     // Track total words currently in flight (in NTT pipeline + in output FIFO)
@@ -90,15 +92,35 @@ module INTT_engine_axis_wrapper #(
         end
     end
 
+    // Instance Pointwise Mul // 
+    wire pmul_valid;
+
+    PointwiseMul PointMul(
+        .clk_i(clk),
+        .rst_i(rst),
+        .a1_i(a1),
+        .a2_i(a2),
+        .b1_i(b1),
+        .b2_i(b2),
+        .valid_i(in_handshake),
+        .valid_o(pmul_valid),
+        .a_o(a_pmul_intt),
+        .b_o(b_pmul_intt)
+    );
+
+    // result from here goes into INTT engine // 
+
+
+
     // Instantiate the NTT engine core
     // stall_i is tied to 0 so core pipeline never drops valid beats internally
     INTT_engine intt_inst (
         .clk(clk),
         .rst(rst),
-        .valid_i(in_handshake),
+        .valid_i(pmul_valid),
         .stall_i(1'b0),
-        .a_i(a_i),
-        .b_i(b_i),
+        .a_i(a_pmul_intt),
+        .b_i(b_pmul_intt),
         .a_o(a_o),
         .b_o(b_o),
         .valid_o(core_valid_o)
@@ -123,7 +145,7 @@ module INTT_engine_axis_wrapper #(
     // Buffers {core_tlast, b_o, a_o} (65 bits wide, 512 entries deep)
     // Guarantees compliant AXI handshaking & eliminates backpressure stalls
     // -------------------------------------------------------------
-    reg [64:0] fifo_mem [0:FIFO_DEPTH-1];
+    reg [32:0] fifo_mem [0:FIFO_DEPTH-1];
     reg [8:0]  fifo_wr_ptr;
     reg [8:0]  fifo_rd_ptr;
     reg [9:0]  fifo_count;
@@ -159,11 +181,11 @@ module INTT_engine_axis_wrapper #(
     end
 
     // FWFT Output data path
-    wire [64:0] fifo_dout = fifo_mem[fifo_rd_ptr];
+    wire [32:0] fifo_dout = fifo_mem[fifo_rd_ptr];
 
     // AXI4-Stream Master Outputs
     assign m_axis_tvalid = !fifo_empty;
-    assign m_axis_tdata  = fifo_dout[63:0];
-    assign m_axis_tlast  = fifo_dout[64] && m_axis_tvalid;
+    assign m_axis_tdata  = fifo_dout[31:0];
+    assign m_axis_tlast  = fifo_dout[32] && m_axis_tvalid;
 
 endmodule

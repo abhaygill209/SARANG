@@ -4,7 +4,7 @@
 `define N 256
 `define Q 7681
 `define Q_INV 7679
-`define DATA_WIDTH 32
+`define DATA_WIDTH 16
 `define ADDR_WIDTH 8
 `define Q_WIDTH 16
 `define N_inv 7651

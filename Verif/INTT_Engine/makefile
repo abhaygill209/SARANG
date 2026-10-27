@@ -6,6 +6,7 @@ REPO_ROOT := $(abspath $(PWD)/../..)
 
 VERILOG_SOURCES := $(wildcard $(REPO_ROOT)/RTL/INTT/*.v) \
                    $(REPO_ROOT)/RTL/ButterflyUnitCT.v \
+                   $(REPO_ROOT)/RTL/PointwiseMul.v \
                    $(REPO_ROOT)/RTL/Delay_unit_1.v \
                    $(REPO_ROOT)/RTL/FIFO.v \
                    $(REPO_ROOT)/RTL/PairReorder.v \
